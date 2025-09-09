@@ -1,0 +1,13 @@
+flask
+pandas
+numpy
+redis
+google-cloud-bigquery
+scikit-learn
+catboost
+tensorflow
+shap
+requests
+pydantic
+pytest
+requests-mock
