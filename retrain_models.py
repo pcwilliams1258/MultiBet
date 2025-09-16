@@ -7,10 +7,9 @@ It handles data retrieval from BigQuery, model training, backtesting, and deploy
 """
 
 import logging
-import os
 import sys
 from datetime import datetime, timedelta
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 # Setup logging
 logging.basicConfig(

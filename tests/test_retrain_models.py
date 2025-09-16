@@ -5,7 +5,7 @@ Tests for the automated model retraining pipeline.
 import os
 import sys
 from datetime import datetime
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -145,17 +145,16 @@ class TestRetrainingPipeline:
     def test_error_handling_in_functions(self):
         """Test error handling in individual functions."""
         # Test that functions properly handle and re-raise exceptions
-        with patch("retrain_models.logger") as mock_logger:
-            # This will test the except block in functions if we simulate an error
-            # For now, we just ensure functions can be called without errors
-            try:
-                retrain_models.get_latest_training_data()
-                retrain_models.train_new_model({"features": [], "targets": []})
-                retrain_models.backtest_model_clv({"model": None})
-                retrain_models.compare_and_deploy({}, {"average_clv": 0.01})
-            except Exception:
-                # Functions should not raise unexpected exceptions in normal operation
-                pass
+        # This will test the except block in functions if we simulate an error
+        # For now, we just ensure functions can be called without errors
+        try:
+            retrain_models.get_latest_training_data()
+            retrain_models.train_new_model({"features": [], "targets": []})
+            retrain_models.backtest_model_clv({"model": None})
+            retrain_models.compare_and_deploy({}, {"average_clv": 0.01})
+        except Exception:
+            # Functions should not raise unexpected exceptions in normal operation
+            pass
 
     def test_model_version_format(self):
         """Test that model version follows expected format."""
