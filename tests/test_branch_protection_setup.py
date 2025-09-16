@@ -22,9 +22,7 @@ def test_repository_structure():
     assert (
         repo_root / ".github" / "workflows"
     ).exists(), "workflows directory must exist"
-    assert (
-        repo_root / "docs"
-    ).exists(), "docs directory must exist"
+    assert (repo_root / "docs").exists(), "docs directory must exist"
 
     # Check for essential files
     assert (repo_root / "requirements.txt").exists(), "requirements.txt must exist"
