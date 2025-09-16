@@ -62,5 +62,9 @@ Build the MLOps and validation frameworks to ensure the project's long-term viab
 - **5.1:** As the founder, I need to automate the logging and calculation of Closing Line Value (CLV) for every recommended bet to have a definitive KPI for model performance.
 - **5.2:** As the founder, I need to integrate model explainability (XAI) using SHAP to understand model predictions and feed a confidence score into the dynamic staking engine.
 - **5.3:** As the founder, I need to scaffold an automated retraining pipeline to combat model drift and ensure the predictive models adapt to evolving market conditions.
+- **5.4:** As the founder, I need to implement a comprehensive model performance monitoring and alerting system that tracks key metrics (accuracy, CLV, profitability) in real-time and triggers alerts when performance degrades below acceptable thresholds.
+- **5.5:** As the founder, I need to enhance the automated retraining pipeline with intelligent trigger mechanisms based on performance degradation, data drift detection, and scheduled retraining intervals to maintain optimal model performance.
+- **5.6:** As the founder, I need to build a robust back-testing framework that validates model changes against historical data, simulating betting scenarios with proper time-series validation to ensure new models improve upon existing performance before deployment.
+- **5.7:** As the founder, I need to establish an A/B testing framework for live models that safely compares new model versions against existing ones using traffic splitting, statistical significance testing, and automated rollback mechanisms to minimize risk during model updates.
 
 ---
