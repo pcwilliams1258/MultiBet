@@ -5,7 +5,7 @@
 ## Issue #1: Setup - Initialize Python Project Structure and Dependencies
 
 **Body:**  
-This issue covers the initial project setup as per User Story 2.1. It involves creating the directory structure, initializing Git, and defining project dependencies.
+This issue covers the initial project setup as per User Story 1.1. It involves creating the directory structure, initializing Git, and defining project dependencies.
 
 **Acceptance Criteria:**
 - [ ] A `src` directory exists with subdirectories: `core_engine`, `data_pipelines`, `models`, `tests`.
@@ -36,7 +36,7 @@ This issue covers the initial project setup as per User Story 2.1. It involves c
 ## Issue #2: Architect - Define Core Engine and BaseModel Interface
 
 **Body:**  
-Implements the core "pluggable" architecture as per User Story 2.2. Involves creating the abstract `BasePredictiveModel` interface and the `CoreEngine` orchestrator class.
+Implements the core "pluggable" architecture as per User Story 1.2. Involves creating the abstract `BasePredictiveModel` interface and the `CoreEngine` orchestrator class.
 
 **Acceptance Criteria:**
 - [ ] `src/models/base_model.py` contains an abstract class `BasePredictiveModel`.
@@ -53,7 +53,7 @@ Implements the core "pluggable" architecture as per User Story 2.2. Involves cre
 ## Issue #3: Feat - Implement Foundational Quantitative Functions
 
 **Body:**  
-Implements core mathematical functions as per User Story 2.3. Involves creating `calculate_value_score` and `calculate_fractional_kelly_stake` functions.
+Implements core mathematical functions as per User Story 1.3. Involves creating `calculate_value_score` and `calculate_fractional_kelly_stake` functions.
 
 **Acceptance Criteria:**
 - [ ] `src/core_engine/quant_functions.py` is created.
@@ -69,7 +69,7 @@ Implements core mathematical functions as per User Story 2.3. Involves creating 
 ## Issue #4: Feat - Implement Pydantic Schemas and Feature Store Interfaces
 
 **Body:**  
-Implements data validation schemas and feature store interfaces as per User Story 1.4.
+Implements data validation schemas and feature store interfaces as per Epic 2.
 
 **Acceptance Criteria:**
 - [ ] `src/data_pipelines/schemas.py` is created.

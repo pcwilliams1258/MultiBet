@@ -37,7 +37,7 @@ This document is the official log of all major development tasks completed using
 3. **Prompt 3 (Git Ignore):**  
    "Generate a standard `.gitignore` file suitable for a Python project."
 4. **Prompt 4 (Dependencies):**  
-   "Create a `requirements.txt` file in the root directory. Add: flask, pandas, numpy, redis, google-cloud-bigquery, scikit-learn, catboost, tensorflow, shap, requests, pydantic, pytest."
+   "Create a `requirements.txt` file in the root directory. Add: flask, pandas, numpy, redis, google-cloud-bigquery, scikit-learn, catboost, tensorflow, shap, requests, pydantic, pytest, requests-mock."
 
 **AI Explanation Summary:**  
 (N/A for file system setup)
