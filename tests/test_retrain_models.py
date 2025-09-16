@@ -2,8 +2,6 @@
 Tests for the automated model retraining pipeline.
 """
 
-import os
-import sys
 from datetime import datetime
 from unittest.mock import patch
 
