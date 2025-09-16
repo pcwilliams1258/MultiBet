@@ -12,9 +12,9 @@ This document consolidates the strategic roadmap and implementation backlog for 
 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
-| 1.1 | Initialize project environment with clean directory structure, version control, and dependencies | #1: Setup - Initialize Python Project Structure and Dependencies | ✅ Complete | High | @founder-username |
-| 1.2 | Generate core engine architecture with abstract `BasePredictiveModel` interface and `CoreEngine` orchestrator | #2: Architect - Define Core Engine and BaseModel Interface | 🔄 In Progress | High | @founder-username |
-| 1.3 | Implement foundational quantitative logic for value score calculation and initial staking | #3: Feat - Implement Foundational Quantitative Functions | 📋 Planned | High | @founder-username |
+| 1.1 | Initialize project environment with clean directory structure, version control, and dependencies | #1: Setup - Initialize Python Project Structure and Dependencies | ✅ Complete | High | @pcwilliams1258 |
+| 1.2 | Generate core engine architecture with abstract `BasePredictiveModel` interface and `CoreEngine` orchestrator | #2: Architect - Define Core Engine and BaseModel Interface | 🔄 In Progress | High | @pcwilliams1258 |
+| 1.3 | Implement foundational quantitative logic for value score calculation and initial staking | #3: Feat - Implement Foundational Quantitative Functions | 📋 Planned | High | @pcwilliams1258 |
 
 ---
 
@@ -26,7 +26,7 @@ This document consolidates the strategic roadmap and implementation backlog for 
 |---------|------------|--------------|--------|----------|----------|
 | 2.1 | Architect and deploy two-layer Feature Store (Online/Redis, Offline/BigQuery) with data schemas | #4: Feat - Implement Pydantic Schemas and Feature Store Interfaces | 📋 Planned | High | @copilot |
 | 2.2 | Ingest market and odds data from The Odds API | #5: Feat - Build API Clients for The Odds API and The Racing API | 📋 Planned | Medium | @copilot |
-| 2.3 | Ingest granular sports statistics from Sportradar for high-alpha sports features | #6: Feat - Engineer High-Impact Sports Features | 📋 Planned | Medium | @founder-username |
+| 2.3 | Ingest granular sports statistics from Sportradar for high-alpha sports features | #6: Feat - Engineer High-Impact Sports Features | 📋 Planned | Medium | @pcwilliams1258 |
 | 2.4 | Ingest granular racing statistics including gear changes and sectional times | #7: Feat - Engineer High-Impact Racing Features | 📋 Planned | Medium | @copilot |
 
 ---
@@ -50,8 +50,8 @@ This document consolidates the strategic roadmap and implementation backlog for 
 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
-| 4.1-4.2 | Implement quantitative correlation engine using Student's t-Copula for Same-Game Multis | #9: Feat - Implement Quantitative Correlation Engine | 📋 Planned | Critical | @founder-username |
-| 4.3 | Implement dynamic Fractional Kelly staking with confidence score integration | #10: Feat - Implement Dynamic Fractional Kelly Staking | 📋 Planned | High | @founder-username |
+| 4.1-4.2 | Implement quantitative correlation engine using Student's t-Copula for Same-Game Multis | #9: Feat - Implement Quantitative Correlation Engine | 📋 Planned | Critical | @pcwilliams1258 |
+| 4.3 | Implement dynamic Fractional Kelly staking with confidence score integration | #10: Feat - Implement Dynamic Fractional Kelly Staking | 📋 Planned | High | @pcwilliams1258 |
 
 ---
 
@@ -61,13 +61,13 @@ This document consolidates the strategic roadmap and implementation backlog for 
 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
-| 5.1 | Automate logging and calculation of Closing Line Value (CLV) for performance KPI | #11: Feat - Automate Closing Line Value (CLV) Logging | 📋 Planned | High | @founder-username |
-| 5.2 | Integrate model explainability (XAI) using SHAP for confidence scoring | #12: Feat - Integrate SHAP for Model Explainability | 📋 Planned | High | @founder-username |
+| 5.1 | Automate logging and calculation of Closing Line Value (CLV) for performance KPI | #11: Feat - Automate Closing Line Value (CLV) Logging | 📋 Planned | High | @pcwilliams1258 |
+| 5.2 | Integrate model explainability (XAI) using SHAP for confidence scoring | #12: Feat - Integrate SHAP for Model Explainability | 📋 Planned | High | @pcwilliams1258 |
 | 5.3 | Scaffold automated retraining pipeline to combat model drift | #13: Chore - Scaffold Automated Retraining Pipeline | ✅ Complete | High | @copilot |
 | 5.4 | Implement comprehensive model performance monitoring and alerting system | #18: Feat - Implement Performance Monitoring Dashboard and Alerting | 📋 Planned | Medium | @copilot |
-| 5.5 | Enhance retraining pipeline with intelligent trigger mechanisms | #17: Chore - Configure CI/CD for Automated Retraining Pipeline | 📋 Planned | Medium | @founder-username |
-| 5.6 | Build robust back-testing framework for historical validation | #19: Feat - Build Robust Back-testing Framework | 📋 Planned | Medium | @founder-username |
-| 5.7 | Establish A/B testing framework for safe live model comparisons | #20: Feat - Implement A/B Testing Framework for Live Models | 📋 Planned | Medium | @founder-username |
+| 5.5 | Enhance retraining pipeline with intelligent trigger mechanisms | #17: Chore - Configure CI/CD for Automated Retraining Pipeline | 📋 Planned | Medium | @pcwilliams1258 |
+| 5.6 | Build robust back-testing framework for historical validation | #19: Feat - Build Robust Back-testing Framework | 📋 Planned | Medium | @pcwilliams1258 |
+| 5.7 | Establish A/B testing framework for safe live model comparisons | #20: Feat - Implement A/B Testing Framework for Live Models | 📋 Planned | Medium | @pcwilliams1258 |
 
 ---
 
@@ -75,8 +75,8 @@ This document consolidates the strategic roadmap and implementation backlog for 
 
 | Task ID | Description | GitHub Issue | Status | Priority | Assignee |
 |---------|-------------|--------------|--------|----------|----------|
-| INFRA-1 | Automate PROMPT_LOG.md updates with GitHub Actions | #14: Chore - Automate PROMPT_LOG.md Updates with GitHub Actions | 📋 Planned | Low | @founder-username |
-| INFRA-2 | Configure branch protection rules for main branch | #15: Chore - Configure Branch Protection Rules for main | ✅ Complete | High | @founder-username |
+| INFRA-1 | Automate PROMPT_LOG.md updates with GitHub Actions | #14: Chore - Automate PROMPT_LOG.md Updates with GitHub Actions | 📋 Planned | Low | @pcwilliams1258 |
+| INFRA-2 | Configure branch protection rules for main branch | #15: Chore - Configure Branch Protection Rules for main | ✅ Complete | High | @pcwilliams1258 |
 | INFRA-3 | Create GitHub issue templates for standardized reporting | #16: Chore - Create GitHub Issue Templates | ✅ Complete | Medium | @copilot |
 
 ---
@@ -98,5 +98,5 @@ This document consolidates the strategic roadmap and implementation backlog for 
 
 ## Assignee Tracks
 
-- **@founder-username**: Glass Box track - high-level architecture and quantitative logic
+- **@pcwilliams1258**: Glass Box track - high-level architecture and quantitative logic
 - **@copilot**: Delegation track - implementation of defined specifications and infrastructure
