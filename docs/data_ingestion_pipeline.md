@@ -1,5 +1,7 @@
 # Data Ingestion Pipeline
 
+**Last Reviewed: 2025-09-16**
+
 This document outlines the comprehensive data ingestion pipeline for the Unified Multi-Code Bet Generation Engine, detailing how data will be sourced, ingested, and transformed to fit the defined schemas.
 
 ---
