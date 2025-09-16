@@ -1,0 +1,57 @@
+name: Documentation Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    name: Check Documentation Updates
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Check for source code changes
+        id: check_source
+        run: |
+          # Check if any Python files in src/ have been modified
+          SOURCE_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^src/.*\.py$' || true)
+          if [ -n "$SOURCE_CHANGED" ]; then
+            echo "source_changed=true" >> $GITHUB_OUTPUT
+            echo "Changed source files:"
+            echo "$SOURCE_CHANGED"
+          else
+            echo "source_changed=false" >> $GITHUB_OUTPUT
+            echo "No source code changes detected"
+          fi
+      
+      - name: Check for documentation updates
+        id: check_docs
+        if: steps.check_source.outputs.source_changed == 'true'
+        run: |
+          # Check if any files in project_knowledge/ have been modified
+          DOCS_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^project_knowledge/' || true)
+          if [ -n "$DOCS_CHANGED" ]; then
+            echo "docs_changed=true" >> $GITHUB_OUTPUT
+            echo "Documentation changes detected:"
+            echo "$DOCS_CHANGED"
+          else
+            echo "docs_changed=false" >> $GITHUB_OUTPUT
+            echo "No documentation changes detected"
+          fi
+      
+      - name: Comment on PR if documentation reminder needed
+        if: steps.check_source.outputs.source_changed == 'true' && steps.check_docs.outputs.docs_changed == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## 📚 Documentation Reminder\n\nThis PR modifies source code but doesn\'t include documentation updates. Please consider:\n\n- Updating relevant files in `project_knowledge/` if the changes affect system architecture or user-facing functionality\n- Ensuring user story references remain consistent with `roadmap.md`\n- Adding any new dependencies to documentation\n\nIf documentation updates aren\'t needed for this change, please ignore this reminder.'
+            })
