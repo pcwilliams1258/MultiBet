@@ -62,5 +62,12 @@ Build the MLOps and validation frameworks to ensure the project's long-term viab
 - **5.1:** As the founder, I need to automate the logging and calculation of Closing Line Value (CLV) for every recommended bet to have a definitive KPI for model performance.
 - **5.2:** As the founder, I need to integrate model explainability (XAI) using SHAP to understand model predictions and feed a confidence score into the dynamic staking engine.
 - **5.3:** As the founder, I need to scaffold an automated retraining pipeline to combat model drift and ensure the predictive models adapt to evolving market conditions.
+- **5.4:** As the founder, I need to implement real-time model performance monitoring that tracks key metrics (accuracy, precision, recall, CLV) across all predictive models to detect performance degradation immediately.
+- **5.5:** As the founder, I need to establish automated alerting systems that notify me when model performance drops below predefined thresholds or when data drift is detected, enabling rapid response to model issues.
+- **5.6:** As the founder, I need to build a comprehensive back-testing framework that validates all model changes against historical data, ensuring new model versions perform better than previous iterations before deployment.
+- **5.7:** As the founder, I need to implement an A/B testing framework for live models that allows safe deployment of model updates by gradually rolling out changes and comparing performance against the baseline model.
+- **5.8:** As the founder, I need to create automated model validation pipelines that run comprehensive tests (statistical significance, feature importance stability, prediction consistency) before any model is promoted to production.
+- **5.9:** As the founder, I need to establish data quality monitoring that continuously validates incoming data feeds for completeness, accuracy, and consistency to prevent corrupted data from affecting model performance.
+- **5.10:** As the founder, I need to implement automated rollback mechanisms that can instantly revert to the previous model version if the deployed model shows significantly worse performance during live testing.
 
 ---
