@@ -295,3 +295,55 @@ Sets up GitHub Actions workflow to run retraining pipeline on a schedule as per 
 **Assignee:** @founder-username (Recommended Track: Glass Box)
 
 ---
+
+## Issue #18: Feat - Implement Performance Monitoring Dashboard and Alerting
+
+**Body:**  
+Implements a real-time performance monitoring dashboard and automated alerting for model degradation, as per User Story 5.4.
+
+**Acceptance Criteria:**
+- [ ] A new script `monitoring/dashboard.py` is created using a library like Dash or Streamlit.
+- [ ] The dashboard visualizes key metrics: CLV, SHAP values, and prediction accuracy over time.
+- [ ] Data is pulled from the BigQuery bet log.
+- [ ] A separate script `monitoring/alerter.py` runs on a schedule.
+- [ ] The alerter script checks if average CLV over the last 100 bets drops below a predefined threshold.
+- [ ] If the threshold is breached, an alert (e.g., email, Slack) is triggered.
+
+**Labels:** `feature`, `epic-5`, `mlops`, `monitoring`  
+**Assignee:** @copilot (Recommended Track: Delegation)
+
+---
+
+## Issue #19: Feat - Build Robust Back-testing Framework
+
+**Body:**  
+Develops a comprehensive back-testing framework to evaluate model performance on historical data, as per User Story 5.5.
+
+**Acceptance Criteria:**
+- [ ] A new script `tools/backtester.py` is created.
+- [ ] The script accepts a model version, a date range, and a betting strategy as input.
+- [ ] It simulates the `CoreEngine`'s logic against historical data from the offline feature store (BigQuery).
+- [ ] It outputs a detailed performance report including total profit/loss, ROI, and CLV.
+- [ ] The framework can be run from the command line.
+
+**Labels:** `feature`, `epic-5`, `mlops`, `back-testing`  
+**Assignee:** @founder-username (Recommended Track: Glass Box)
+
+---
+
+## Issue #20: Feat - Implement A/B Testing Framework for Live Models
+
+**Body:**  
+Creates an A/B testing framework to compare the performance of two different model versions in a live production environment, as per User Story 5.6.
+
+**Acceptance Criteria:**
+- [ ] The `CoreEngine` is modified to support A/B testing logic.
+- [ ] When an A/B test is active, the engine routes a percentage of requests to a "challenger" model.
+- [ ] Bet placements made by the challenger model are tagged accordingly in the BigQuery log.
+- [ ] A new script `tools/ab_test_analyzer.py` is created to compare the performance of the challenger vs. the champion model.
+- [ ] The analysis script provides statistical significance (e.g., p-value) for the performance difference.
+
+**Labels:** `feature`, `epic-5`, `mlops`, `ab-testing`  
+**Assignee:** @founder-username (Recommended Track: Glass Box)
+
+---
