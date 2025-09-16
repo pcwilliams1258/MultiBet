@@ -19,7 +19,7 @@ Brief description of the changes made in this PR.
 - [ ] I have verified the changes work as expected
 
 ## Documentation Checklist
-- [ ] I have updated the relevant documentation in `project_knowledge/` if needed
+- [ ] I have updated the relevant documentation in `docs/` if needed
 - [ ] If I modified source code, I have checked if documentation needs updating
 - [ ] Any new dependencies are documented in appropriate places
 - [ ] User stories and issue references are consistent with `roadmap.md`
