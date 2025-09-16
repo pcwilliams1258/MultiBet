@@ -1,5 +1,7 @@
 # Technical Specification: Unified Multi-Code Bet Generation Engine
 
+**Last Reviewed: 2025-09-16**
+
 This document provides the detailed technical specifications, formulas, and data schemas required to build the application.
 
 ---

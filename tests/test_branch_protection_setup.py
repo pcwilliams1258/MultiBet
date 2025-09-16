@@ -23,8 +23,8 @@ def test_repository_structure():
         repo_root / ".github" / "workflows"
     ).exists(), "workflows directory must exist"
     assert (
-        repo_root / "project_knowledge"
-    ).exists(), "project_knowledge directory must exist"
+        repo_root / "docs"
+    ).exists(), "docs directory must exist"
 
     # Check for essential files
     assert (repo_root / "requirements.txt").exists(), "requirements.txt must exist"
@@ -152,12 +152,12 @@ def test_gitignore_includes_common_files():
 def test_documentation_completeness():
     """Test that project documentation is complete"""
     repo_root = Path(__file__).parent.parent
-    docs_dir = repo_root / "project_knowledge"
+    docs_dir = repo_root / "docs"
 
-    assert docs_dir.exists(), "project_knowledge directory must exist"
+    assert docs_dir.exists(), "docs directory must exist"
 
     # Check for essential documentation files
-    essential_docs = ["roadmap.md", "technical_specification.md"]
+    essential_docs = ["PLAN.md", "technical_specification.md"]
 
     for doc in essential_docs:
         doc_path = docs_dir / doc

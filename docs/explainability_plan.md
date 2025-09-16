@@ -1,5 +1,7 @@
 # SHAP Explainability Integration Plan
 
+**Last Reviewed: 2025-09-16**
+
 This document defines how SHAP (SHapley Additive exPlanations) will be integrated into the MultiBet engine's model workflow and how its outputs will be used to enhance model transparency, validation, and confidence scoring.
 
 ---
