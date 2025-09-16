@@ -9,9 +9,6 @@ from unittest.mock import patch
 
 import pytest
 
-# Add the project root to the path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import retrain_models
 
 
@@ -212,7 +209,6 @@ def test_script_executable():
         [sys.executable, "retrain_models.py"],
         capture_output=True,
         text=True,
-        cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     )
 
     # Script should exit with 0 (success) since it's a placeholder implementation
