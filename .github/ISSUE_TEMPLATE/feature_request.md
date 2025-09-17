@@ -19,6 +19,13 @@ Please provide specific, testable criteria that define when this feature is comp
 - [ ] Criterion 2
 - [ ] Criterion 3
 
+## Definition of Done
+This feature implementation must include:
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 ## Alternative Solutions
 A clear and concise description of any alternative solutions or features you've considered.
 

@@ -14,7 +14,20 @@ This document consolidates the strategic roadmap and implementation backlog for 
 |---------|------------|--------------|--------|----------|----------|
 | 1.1 | Initialize project environment with clean directory structure, version control, and dependencies | #1: Setup - Initialize Python Project Structure and Dependencies | ✅ Complete | High | @pcwilliams1258 |
 | 1.2 | Generate core engine architecture with abstract `BasePredictiveModel` interface and `CoreEngine` orchestrator | #2: Architect - Define Core Engine and BaseModel Interface | 🔄 In Progress | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 1.3 | Implement foundational quantitative logic for value score calculation and initial staking | #3: Feat - Implement Foundational Quantitative Functions | 📋 Planned | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 
 ---
 
@@ -25,9 +38,42 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
 | 2.1 | Architect and deploy two-layer Feature Store (Online/Redis, Offline/BigQuery) with data schemas | #4: Feat - Implement Pydantic Schemas and Feature Store Interfaces | 📋 Planned | High | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 2.2 | Ingest market and odds data from The Odds API | #5: Feat - Build API Clients for The Odds API and The Racing API | 📋 Planned | Medium | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 2.3 | Ingest granular sports statistics from Sportradar for high-alpha sports features | #6: Feat - Engineer High-Impact Sports Features | 📋 Planned | Medium | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 2.4 | Ingest granular racing statistics including gear changes and sectional times | #7: Feat - Engineer High-Impact Racing Features | 📋 Planned | Medium | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 
 ---
 
@@ -42,6 +88,12 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | 3.3 | Create `PlayerTriesNBModel` class skeleton for count-based player prop predictions | #8: Refactor - Create Skeletons for All Predictive Models | 📋 Planned | Medium | @copilot |
 | 3.4 | Create `PlayerDisposalsLSTMModel` class skeleton for time-series player performance | #8: Refactor - Create Skeletons for All Predictive Models | 📋 Planned | Medium | @copilot |
 
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 ---
 
 ## Phase 4: Engineering the Advanced Multi-Bet Engine
@@ -51,7 +103,20 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
 | 4.1-4.2 | Implement quantitative correlation engine using Student's t-Copula for Same-Game Multis | #9: Feat - Implement Quantitative Correlation Engine | 📋 Planned | Critical | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 4.3 | Implement dynamic Fractional Kelly staking with confidence score integration | #10: Feat - Implement Dynamic Fractional Kelly Staking | 📋 Planned | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 
 ---
 
@@ -62,12 +127,71 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
 | 5.1 | Automate logging and calculation of Closing Line Value (CLV) for performance KPI | #11: Feat - Automate Closing Line Value (CLV) Logging | 📋 Planned | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 5.2 | Integrate model explainability (XAI) using SHAP for confidence scoring | #12: Feat - Integrate SHAP for Model Explainability | 📋 Planned | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 | 5.3 | Scaffold automated retraining pipeline to combat model drift | #13: Chore - Scaffold Automated Retraining Pipeline | ✅ Complete | High | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 | 5.4 | Implement comprehensive model performance monitoring and alerting system | #18: Feat - Implement Performance Monitoring Dashboard and Alerting | 📋 Planned | Medium | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 5.5 | Enhance retraining pipeline with intelligent trigger mechanisms | #17: Chore - Configure CI/CD for Automated Retraining Pipeline | 📋 Planned | Medium | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 5.6 | Build robust back-testing framework for historical validation | #19: Feat - Build Robust Back-testing Framework | 📋 Planned | Medium | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 5.7 | Establish A/B testing framework for safe live model comparisons | #20: Feat - Implement A/B Testing Framework for Live Models | 📋 Planned | Medium | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
+---
+
+## Epic 6: Foundational Tooling & Test Automation
+
+**Objective:** Establish comprehensive testing infrastructure and automation to support the Definition of Done standards across all features.
+
+| Task ID | Description | GitHub Issue | Status | Priority | Assignee |
+|---------|-------------|--------------|--------|----------|----------|
+| 6.1 | Implement CI/CD workflow with automated testing and deployment pipeline | TBD: CI Workflow Implementation | 📋 Planned | High | @copilot |
+| 6.2 | Integrate BDD framework with Gherkin feature files for behavior-driven testing | TBD: BDD Framework Integration | 📋 Planned | High | @copilot |
+| 6.3 | Create comprehensive test data management system for consistent testing | TBD: Test Data Management System | 📋 Planned | Medium | @copilot |
+| 6.4 | Implement Dry Run Mode for all betting operations and API calls | TBD: Dry Run Mode Implementation | 📋 Planned | Medium | @copilot |
 
 ---
 
