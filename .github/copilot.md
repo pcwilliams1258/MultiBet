@@ -6,7 +6,7 @@ The core application logic is located in the `src/` directory.
 
 ## Project Documentation (Primary Context Source)
 
-**The markdown files in the `/project_knowledge` directory are the primary source of truth for this repository.** They contain detailed specifications that MUST be followed. When generating code, prioritize the patterns, schemas, and logic defined in these documents.
+**The markdown files in the `/docs` directory are the primary source of truth for this repository.** They contain detailed specifications that MUST be followed. When generating code, prioritize the patterns, schemas, and logic defined in these documents.
 
 - **`technical_specification.md`**: Defines the core quantitative formulas (`Value_Score`, `Dynamic Fractional Kelly Staking`), Pydantic data schemas (`UnifiedRacingData`, `UnifiedSportsData`), and advanced modeling logic like the `Student's t-Copula` for Same-Game Multis.
 - **`data_ingestion_pipeline.md`**: Details the ETL pipeline, the dual-store architecture (Redis for online, BigQuery for offline), API polling/rate-limiting classes, and data transformation/normalization logic.
@@ -28,7 +28,7 @@ The core application logic is located in the `src/` directory.
 ## Coding Conventions & Best Practices
 
 ### Do's
-- **Follow Documentation:** Adhere strictly to the logic and schemas defined in the `project_knowledge` markdown files.
+- **Follow Documentation:** Adhere strictly to the logic and schemas defined in the `docs` markdown files.
 - **Data Schemas:** Use the `UnifiedRacingData` and `UnifiedSportsData` Pydantic models for all data transformation and validation.
 - **Error Handling:** Implement the specified error handling patterns: circuit breakers for API calls, exponential backoff with jitter for retries, and structured JSON logging.
 - **Configuration:** Store all secrets (API keys, DB credentials) in environment variables. Use the `config/` directory only for non-sensitive configuration.

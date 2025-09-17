@@ -90,7 +90,7 @@ jobs:
           ISSUE_URL="https://github.com/${{ github.repository }}/issues/${ISSUE_NUMBER}"
           
           # Create the new entry following the exact template format
-          cat >> project_knowledge/PROMPT_LOG.md << EOF
+          cat >> docs/PROMPT_LOG.md << EOF
           
           ## Issue #${ISSUE_NUMBER} Entry
           
@@ -120,6 +120,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add project_knowledge/PROMPT_LOG.md
+          git add docs/PROMPT_LOG.md
           git commit -m "Auto-update PROMPT_LOG.md for Issue #${{ steps.extract_issue.outputs.result }} (PR #${{ github.event.pull_request.number }})"
           git push

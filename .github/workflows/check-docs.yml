@@ -33,8 +33,8 @@ jobs:
         id: check_docs
         if: steps.check_source.outputs.source_changed == 'true'
         run: |
-          # Check if any files in project_knowledge/ have been modified
-          DOCS_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^project_knowledge/' || true)
+          # Check if any files in docs/ have been modified
+          DOCS_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^docs/' || true)
           if [ -n "$DOCS_CHANGED" ]; then
             echo "docs_changed=true" >> $GITHUB_OUTPUT
             echo "Documentation changes detected:"
@@ -53,5 +53,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '## 📚 Documentation Reminder\n\nThis PR modifies source code but doesn\'t include documentation updates. Please consider:\n\n- Updating relevant files in `project_knowledge/` if the changes affect system architecture or user-facing functionality\n- Ensuring user story references remain consistent with `roadmap.md`\n- Adding any new dependencies to documentation\n\nIf documentation updates aren\'t needed for this change, please ignore this reminder.'
+              body: '## 📚 Documentation Reminder\n\nThis PR modifies source code but doesn\'t include documentation updates. Please consider:\n\n- Updating relevant files in `docs/` if the changes affect system architecture or user-facing functionality\n- Ensuring user story references remain consistent with `roadmap.md`\n- Adding any new dependencies to documentation\n\nIf documentation updates aren\'t needed for this change, please ignore this reminder.'
             })
