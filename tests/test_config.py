@@ -8,11 +8,12 @@ import tempfile
 import json
 from pathlib import Path
 
-# Add the config directory to the path for importing
+# Add the project root to the Python path
 import sys
-sys.path.insert(0, str(Path(__file__).parent.parent / "config"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
+# Import from the config module
+from config.app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
 
 
 class TestConfig:
@@ -23,15 +24,15 @@ class TestConfig:
         # Clear any environment variables that might affect defaults
         original_env = {}
         env_vars_to_clear = ["MULTIBET_DRY_RUN", "MULTIBET_DEBUG", "MULTIBET_LOG_LEVEL"]
-        
+
         for var in env_vars_to_clear:
             if var in os.environ:
                 original_env[var] = os.environ[var]
                 del os.environ[var]
-        
+
         try:
             test_config = Config()
-            
+
             assert test_config.get("DRY_RUN") is False
             assert test_config.get("DEBUG") is False
             assert test_config.get("LOG_LEVEL") == "INFO"
@@ -49,19 +50,19 @@ class TestConfig:
         # Clear any environment variables that might affect defaults
         original_env = {}
         env_vars_to_clear = ["MULTIBET_DRY_RUN", "MULTIBET_DEBUG"]
-        
+
         for var in env_vars_to_clear:
             if var in os.environ:
                 original_env[var] = os.environ[var]
                 del os.environ[var]
-        
+
         try:
             test_config = Config()
-            
+
             # Default should be False
             assert test_config.dry_run is False
             assert test_config.is_betting_enabled() is True
-            
+
             # Enable DRY_RUN
             test_config.set("DRY_RUN", True)
             assert test_config.dry_run is True
@@ -76,7 +77,7 @@ class TestConfig:
         # Set environment variable
         os.environ["MULTIBET_DRY_RUN"] = "true"
         os.environ["MULTIBET_MODEL_THRESHOLD"] = "0.1"
-        
+
         try:
             test_config = Config()
             assert test_config.get("DRY_RUN") is True
@@ -95,11 +96,11 @@ class TestConfig:
             "DEBUG": True,
             "MODEL_THRESHOLD": 0.08
         }
-        
+
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(config_data, f)
             config_file = f.name
-        
+
         try:
             test_config = Config(config_file=config_file)
             assert test_config.get("DRY_RUN") is True
@@ -111,18 +112,18 @@ class TestConfig:
     def test_config_validation(self):
         """Test configuration validation."""
         test_config = Config()
-        
+
         # Valid configuration should pass
         assert test_config.validate_configuration() is True
-        
+
         # Invalid configuration should raise ValueError
         test_config.set("MAX_STAKE_PERCENTAGE", 1.5)  # > 1
         with pytest.raises(ValueError):
             test_config.validate_configuration()
-        
+
         # Reset to valid value
         test_config.set("MAX_STAKE_PERCENTAGE", 0.02)
-        
+
         # Test odds validation
         test_config.set("MIN_ODDS", 5.0)
         test_config.set("MAX_ODDS", 2.0)  # min > max
@@ -133,7 +134,7 @@ class TestConfig:
         """Test betting limits configuration."""
         test_config = Config()
         limits = test_config.get_betting_limits()
-        
+
         assert "max_stake_percentage" in limits
         assert "min_odds" in limits
         assert "max_odds" in limits
@@ -146,13 +147,13 @@ class TestConfig:
         """Test global DRY_RUN helper functions."""
         # Test initial state
         original_state = is_dry_run()
-        
+
         try:
             # Enable DRY_RUN
             enable_dry_run()
             assert is_dry_run() is True
             assert config.dry_run is True
-            
+
             # Disable DRY_RUN
             disable_dry_run()
             assert is_dry_run() is False
@@ -164,7 +165,7 @@ class TestConfig:
     def test_boolean_parsing(self):
         """Test boolean value parsing from strings."""
         test_config = Config()
-        
+
         # Test various true values
         true_values = ["true", "True", "TRUE", "1", "yes", "Yes", "on", "enabled"]
         for value in true_values:
@@ -175,7 +176,7 @@ class TestConfig:
             finally:
                 if "MULTIBET_DRY_RUN" in os.environ:
                     del os.environ["MULTIBET_DRY_RUN"]
-        
+
         # Test false values
         false_values = ["false", "False", "FALSE", "0", "no", "off", "disabled"]
         for value in false_values:
@@ -191,12 +192,12 @@ class TestConfig:
         """Test configuration export to dictionary."""
         test_config = Config()
         config_dict = test_config.to_dict()
-        
+
         assert isinstance(config_dict, dict)
         assert "DRY_RUN" in config_dict
         assert "DEBUG" in config_dict
         assert "MODEL_THRESHOLD" in config_dict
-        
+
         # Ensure it's a copy, not reference
         config_dict["DRY_RUN"] = True
         assert test_config.get("DRY_RUN") is False  # Original should be unchanged
@@ -205,7 +206,7 @@ class TestConfig:
         """Test string representation of configuration."""
         test_config = Config()
         config_str = str(test_config)
-        
+
         assert "Config(" in config_str
         assert "DRY_RUN=" in config_str
         assert "DEBUG=" in config_str
@@ -218,21 +219,21 @@ class TestDryRunIntegration:
         """Test DRY_RUN mode prevents actual betting."""
         test_config = Config()
         test_config.set("DRY_RUN", True)
-        
+
         # Simulate a betting scenario
         odds = 2.5
         probability = 0.5
         bankroll = 1000
-        
+
         # In DRY_RUN mode, betting should be disabled
         assert test_config.is_betting_enabled() is False
-        
+
         # Mock betting function that checks DRY_RUN
         def place_bet(odds, stake, config):
             if not config.is_betting_enabled():
                 return {"status": "dry_run", "message": "DRY_RUN mode: no actual bet placed"}
             return {"status": "bet_placed", "odds": odds, "stake": stake}
-        
+
         result = place_bet(odds, 100, test_config)
         assert result["status"] == "dry_run"
         assert "DRY_RUN mode" in result["message"]
@@ -242,22 +243,22 @@ class TestDryRunIntegration:
         # Set environment variable
         os.environ["MULTIBET_DRY_RUN"] = "true"
         os.environ["MULTIBET_DEBUG"] = "true"
-        
+
         try:
             test_config = Config()
-            
+
             # Verify configuration
             assert test_config.dry_run is True
             assert test_config.debug is True
             assert test_config.is_betting_enabled() is False
-            
+
             # Test logging behavior would be different in debug + dry_run
             log_level = "DEBUG" if test_config.debug else "INFO"
             betting_enabled = test_config.is_betting_enabled()
-            
+
             assert log_level == "DEBUG"
             assert betting_enabled is False
-            
+
         finally:
             # Clean up
             if "MULTIBET_DRY_RUN" in os.environ:
