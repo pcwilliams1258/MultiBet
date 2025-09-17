@@ -43,3 +43,25 @@ This JSON object describes the initial features and logic for the Minimum Viable
   }
 }
 ```
+
+## 2. File Structure (Mermaid Diagram)
+
+This diagram illustrates the target file structure for the Python application source code within the src/ directory.
+
+```mermaid
+graph TD
+    A[src] --> B[core_engine];
+    A --> C[data_pipelines];
+    A --> D[models];
+    A --> E[tests];
+
+    B --> B1[base_model.py];
+    B --> B2[value_scorer.py];
+
+    C --> C1[api_poller.py];
+    C --> C2[schemas.py];
+    C --> C3[transformer.py];
+
+    D --> D1[racing_logit_model.py];
+    D --> D2[sports_catboost_model.py];
+```
