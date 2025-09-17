@@ -8,10 +8,6 @@ import tempfile
 import json
 from pathlib import Path
 
-# Add the project root to the Python path
-import sys
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
 # Import from the config module
 from config.app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
 
