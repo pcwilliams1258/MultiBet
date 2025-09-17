@@ -13,8 +13,8 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | Task ID | User Story | GitHub Issue | Status | Priority | Assignee |
 |---------|------------|--------------|--------|----------|----------|
 | 1.1 | **As a developer**, I want to initialize a clean project environment so that I can ensure a scalable and maintainable codebase from the start. | #1 | ✅ Complete | High | @pcwilliams1258 |
-| 1.2 | **As a developer**, I want to define a core engine architecture with a `BasePredictiveModel` interface so that new models can be added in a plug-and-play fashion. | #2 | 🔄 In Progress | High | @pcwilliams1258 |
-| 1.3 | **As a data scientist**, I want to implement foundational quantitative logic for value scoring so that the engine can make initial betting decisions. | #3 | 📋 Planned | High | @pcwilliams1258 |
+| 1.2 | **As a developer**, I want to define a core engine architecture with a `BasePredictiveModel` interface so that new models can be added in a plug-and-play fashion. | #73 | 🔄 In Progress | High | @pcwilliams1258 |
+| 1.3 | **As a data scientist**, I want to implement foundational quantitative logic for value scoring so that the engine can make initial betting decisions. | #74 | 📋 Planned | High | @pcwilliams1258 |
 
 **Definition of Done:**
 - [x] **Formal User Story**: The task is framed as a user story to clarify intent.
