@@ -14,6 +14,13 @@ This document consolidates the strategic roadmap and implementation backlog for 
 |---------|------------|--------------|--------|----------|----------|
 | 1.1 | Initialize project environment with clean directory structure, version control, and dependencies | #1: Setup - Initialize Python Project Structure and Dependencies | ✅ Complete | High | @pcwilliams1258 |
 | 1.2 | Generate core engine architecture with abstract `BasePredictiveModel` interface and `CoreEngine` orchestrator | #2: Architect - Define Core Engine and BaseModel Interface | 🔄 In Progress | High | @pcwilliams1258 |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 | 1.3 | Implement foundational quantitative logic for value score calculation and initial staking | #3: Feat - Implement Foundational Quantitative Functions | 📋 Planned | High | @pcwilliams1258 |
 
 **Definition of Done:**
@@ -39,6 +46,12 @@ This document consolidates the strategic roadmap and implementation backlog for 
 - [ ] Support for "Dry Run" mode where applicable
 
 | 2.2 | Ingest market and odds data from The Odds API | #5: Feat - Build API Clients for The Odds API and The Racing API | 📋 Planned | Medium | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 
 **Definition of Done:**
 - [ ] Unit tests for the core logic
@@ -129,6 +142,12 @@ This document consolidates the strategic roadmap and implementation backlog for 
 - [ ] Passing all checks in the CI pipeline
 - [ ] Support for "Dry Run" mode where applicable
 | 5.3 | Scaffold automated retraining pipeline to combat model drift | #13: Chore - Scaffold Automated Retraining Pipeline | ✅ Complete | High | @copilot |
+
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
 | 5.4 | Implement comprehensive model performance monitoring and alerting system | #18: Feat - Implement Performance Monitoring Dashboard and Alerting | 📋 Planned | Medium | @copilot |
 
 **Definition of Done:**
