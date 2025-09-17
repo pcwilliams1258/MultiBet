@@ -1,4 +1,4 @@
-# PROMPT_LOG.md
+# LOGS.md
 
 This document is the official log of all major development tasks completed using the "Glass Box" workflow with GitHub Copilot. It serves as a version-controlled history of the prompts used to generate features, as well as the validation steps taken.
 
