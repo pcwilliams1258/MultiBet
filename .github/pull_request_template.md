@@ -1,31 +1,48 @@
-# Pull Request
+---
+name: Pull Request
+about: Propose changes to the codebase
+---
 
 ## Description
-Brief description of the changes made in this PR.
+A brief description of the changes made in this PR and the problem it solves.
+
+**Resolves:** #[issue_number]
+
+---
 
 ## Type of Change
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation only changes
+- [ ] Documentation update
+- [ ] Chore (refactoring, dependency updates, etc.)
 
-## Changes Made
-- List key changes made
-- Include any important implementation details
+---
 
-## Testing
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] I have verified the changes work as expected
+## ✅ PR Checklist
 
-## Documentation Checklist
-- [ ] I have updated the relevant documentation in `docs/` if needed
-- [ ] If I modified source code, I have checked if documentation needs updating
-- [ ] Any new dependencies are documented in appropriate places
-- [ ] User stories and issue references are consistent with `roadmap.md`
+### 1. Task Completion
+- [ ] **Issue Alignment**: This PR directly addresses all requirements in the linked issue.
+- [ ] **Acceptance Criteria**: All acceptance criteria from the issue have been met and tested.
+
+### 2. Quality Assurance
+- [ ] **Unit Tests**: New and existing unit tests pass locally with my changes.
+- [ ] **BDD Tests**: New Gherkin `.feature` files have been added and are passing.
+- [ ] **Manual Validation**: I have manually verified that the changes work as expected.
+- [ ] **CI/CD**: The CI pipeline is green.
+
+### 3. Documentation
+- [ ] **PLAN.md**: The status in `docs/PLAN.md` has been updated (e.g., from `📋 Planned` to `🔄 In Progress`).
+- [ ] **Architectural Docs**: Any relevant architectural diagrams or documents have been updated.
+
+### 4. AI-Generated Content (If applicable)
+- [ ] **Review**: I have reviewed the AI-generated code and take responsibility for its correctness and quality.
+- [ ] **Prompt Logging**: Key prompts and AI responses have been logged in an issue with the `documentation` label as per our process.
 
 ## AI-Generated Content
 - [ ] Changes are consistent with the guidelines in `.github/copilot.md`
 
+---
+
 ## Additional Notes
-Any additional information or context about the changes.
+Add any other context, screenshots, or information about the pull request here.
