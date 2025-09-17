@@ -10,6 +10,9 @@ assignees: ''
 ## Problem Description
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
+### Is your feature request related to a problem?
+- [ ] I have reviewed `current_project_state.md` to understand how this feature fits with the existing architecture
+
 ## Proposed Solution
 A clear and concise description of what you want to happen.
 

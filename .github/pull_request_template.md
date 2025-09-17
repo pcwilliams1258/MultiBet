@@ -24,5 +24,8 @@ Brief description of the changes made in this PR.
 - [ ] Any new dependencies are documented in appropriate places
 - [ ] User stories and issue references are consistent with `roadmap.md`
 
+## AI-Generated Content
+- [ ] Changes are consistent with the guidelines in `.github/copilot.md`
+
 ## Additional Notes
 Any additional information or context about the changes.
