@@ -41,7 +41,7 @@ def test_label_reference_section_exists():
     # Check for subsections
     assert "### By Type of Work" in content, "By Type of Work subsection should exist"
     assert "### By Project Component" in content, "By Project Component subsection should exist"
-    assert "### By Phase" in content, "By Phase subsection should exist"
+    assert "### By Epic" in content, "By Epic subsection should exist"
 
 
 def test_label_reference_content():
@@ -54,7 +54,7 @@ def test_label_reference_content():
     # Expected labels by category
     work_type_labels = ["enhancement", "bug", "documentation", "testing", "refactor", "project-management"]
     component_labels = ["core-engine", "quantitative-modeling", "data-pipeline", "architecture", "ml-models", "mle-ops", "ci-cd"]
-    phase_labels = ["phase-1", "phase-2", "phase-3", "phase-4", "phase-5", "epic-6", "infra"]
+    epic_labels = ["epic-1", "epic-2", "epic-3", "epic-4", "epic-5", "epic-6", "infra"]
     
     # Check that all expected labels are present
     for label in work_type_labels:
@@ -63,8 +63,8 @@ def test_label_reference_content():
     for label in component_labels:
         assert f"`{label}`" in content, f"Component label '{label}' should be present"
     
-    for label in phase_labels:
-        assert f"`{label}`" in content, f"Phase label '{label}' should be present"
+    for label in epic_labels:
+        assert f"`{label}`" in content, f"Epic label '{label}' should be present"
 
 
 def test_existing_tasks_have_labels():
