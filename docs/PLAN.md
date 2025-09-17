@@ -75,6 +75,12 @@ This document consolidates the strategic roadmap and implementation backlog for 
 | 3.3 | Create `PlayerTriesNBModel` class skeleton for count-based player prop predictions | #8: Refactor - Create Skeletons for All Predictive Models | 📋 Planned | Medium | @copilot |
 | 3.4 | Create `PlayerDisposalsLSTMModel` class skeleton for time-series player performance | #8: Refactor - Create Skeletons for All Predictive Models | 📋 Planned | Medium | @copilot |
 
+**Definition of Done:**
+- [ ] Unit tests for the core logic
+- [ ] Gherkin `.feature` file describing the expected behavior  
+- [ ] Passing all checks in the CI pipeline
+- [ ] Support for "Dry Run" mode where applicable
+
 ---
 
 ## Phase 4: Engineering the Advanced Multi-Bet Engine
