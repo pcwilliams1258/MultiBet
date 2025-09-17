@@ -1,11 +1,6 @@
 import pytest
-import sys
-from pathlib import Path
 
-# Add the project root to the Python path so we can import from 'src'
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from src.core_engine.base_model import BasePredictiveModel
+from core_engine.base_model import BasePredictiveModel
 
 def test_base_model_can_be_imported():
     """
