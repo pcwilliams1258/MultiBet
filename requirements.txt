@@ -11,3 +11,4 @@ requests
 pydantic
 pytest
 requests-mock
+pyyaml
