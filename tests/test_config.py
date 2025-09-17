@@ -20,28 +20,56 @@ class TestConfig:
 
     def test_default_config_values(self):
         """Test that default configuration values are properly set."""
-        test_config = Config()
+        # Clear any environment variables that might affect defaults
+        original_env = {}
+        env_vars_to_clear = ["MULTIBET_DRY_RUN", "MULTIBET_DEBUG", "MULTIBET_LOG_LEVEL"]
         
-        assert test_config.get("DRY_RUN") is False
-        assert test_config.get("DEBUG") is False
-        assert test_config.get("LOG_LEVEL") == "INFO"
-        assert test_config.get("MODEL_THRESHOLD") == 0.05
-        assert test_config.get("MAX_STAKE_PERCENTAGE") == 0.02
-        assert test_config.get("MIN_ODDS") == 1.1
-        assert test_config.get("MAX_ODDS") == 10.0
+        for var in env_vars_to_clear:
+            if var in os.environ:
+                original_env[var] = os.environ[var]
+                del os.environ[var]
+        
+        try:
+            test_config = Config()
+            
+            assert test_config.get("DRY_RUN") is False
+            assert test_config.get("DEBUG") is False
+            assert test_config.get("LOG_LEVEL") == "INFO"
+            assert test_config.get("MODEL_THRESHOLD") == 0.05
+            assert test_config.get("MAX_STAKE_PERCENTAGE") == 0.02
+            assert test_config.get("MIN_ODDS") == 1.1
+            assert test_config.get("MAX_ODDS") == 10.0
+        finally:
+            # Restore original environment variables
+            for var, value in original_env.items():
+                os.environ[var] = value
 
     def test_dry_run_property(self):
         """Test DRY_RUN property functionality."""
-        test_config = Config()
+        # Clear any environment variables that might affect defaults
+        original_env = {}
+        env_vars_to_clear = ["MULTIBET_DRY_RUN", "MULTIBET_DEBUG"]
         
-        # Default should be False
-        assert test_config.dry_run is False
-        assert test_config.is_betting_enabled() is True
+        for var in env_vars_to_clear:
+            if var in os.environ:
+                original_env[var] = os.environ[var]
+                del os.environ[var]
         
-        # Enable DRY_RUN
-        test_config.set("DRY_RUN", True)
-        assert test_config.dry_run is True
-        assert test_config.is_betting_enabled() is False
+        try:
+            test_config = Config()
+            
+            # Default should be False
+            assert test_config.dry_run is False
+            assert test_config.is_betting_enabled() is True
+            
+            # Enable DRY_RUN
+            test_config.set("DRY_RUN", True)
+            assert test_config.dry_run is True
+            assert test_config.is_betting_enabled() is False
+        finally:
+            # Restore original environment variables
+            for var, value in original_env.items():
+                os.environ[var] = value
 
     def test_environment_variable_override(self):
         """Test configuration override via environment variables."""
