@@ -174,9 +174,9 @@ jobs:
         if: steps.check_source.outputs.source_changed == 'true'
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            DOCS_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^project_knowledge/' || true)
+            DOCS_CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep '^docs/' || true)
           else
-            DOCS_CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '^project_knowledge/' || true)
+            DOCS_CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '^docs/' || true)
           fi
           
           if [ -n "$DOCS_CHANGED" ]; then
@@ -192,7 +192,7 @@ jobs:
         if: steps.check_source.outputs.source_changed == 'true' && steps.check_docs.outputs.docs_changed == 'false'
         run: |
           echo "⚠️  Source code changes detected without corresponding documentation updates"
-          echo "Consider updating relevant files in project_knowledge/ if needed"
+          echo "Consider updating relevant files in docs/ if needed"
           exit 0  # Don't fail the build, just warn
 
   build-validation:
