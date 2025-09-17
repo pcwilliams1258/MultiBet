@@ -21,6 +21,13 @@ A clear and concise description of what the task is. What is the goal?
 
 Provide any additional context, links, or notes that might be helpful for completing this task. This can include links to the TSD or other documentation.
 
+## Documentation
+
+Before starting development, ensure you have reviewed the relevant project documentation:
+
+- [ ] I have reviewed `current_project_state.md` to understand the current architecture and state of the application
+- [ ] I have checked `documentation/technical_debt_log.md` to understand any existing technical debt that may impact this task
+
 ---
 
 ## 📚 Definition of Done
