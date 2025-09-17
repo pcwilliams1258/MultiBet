@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 def test_labels_column_in_all_tables():
-    """Test that all task tables in PLAN.md include a Labels column"""
+    """Test that all task tables in PLAN.md include a Labels column and Track column"""
     plan_file = Path(__file__).parent.parent / "docs" / "PLAN.md"
     
     assert plan_file.exists(), "docs/PLAN.md file should exist"
@@ -16,15 +16,16 @@ def test_labels_column_in_all_tables():
     with open(plan_file, "r", encoding="utf-8") as f:
         content = f.read()
     
-    # Find all table headers that should have a Labels column
-    table_headers = re.findall(r'\| Task ID \| User Story \| GitHub Issue \| Status \| Priority \| Assignee \|.*?\|', content)
+    # Find all table headers that should have a Labels column and Track column
+    table_headers = re.findall(r'\| Task ID \| User Story \| GitHub Issue \| Status \| Priority \| Assignee \|.*?\|.*?\|', content)
     
     # Should have 6 tables (5 phases + 1 epic + 1 infrastructure)
     assert len(table_headers) >= 6, f"Expected at least 6 task tables, found {len(table_headers)}"
     
-    # Check that all tables have Labels column
+    # Check that all tables have Labels column and Track column
     for header in table_headers:
         assert "Labels" in header, f"Table header should include Labels column: {header}"
+        assert "Track" in header, f"Table header should include Track column: {header}"
 
 
 def test_label_reference_section_exists():
@@ -67,23 +68,43 @@ def test_label_reference_content():
 
 
 def test_existing_tasks_have_labels():
-    """Test that existing tasks have been populated with appropriate labels"""
+    """Test that existing tasks have been populated with appropriate labels and track information"""
     plan_file = Path(__file__).parent.parent / "docs" / "PLAN.md"
     
     with open(plan_file, "r", encoding="utf-8") as f:
         content = f.read()
     
-    # Check that task rows have labels (look for rows that have all table elements including labels)
-    task_rows = re.findall(r'\| \d+\.\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \|', content)
-    task_rows.extend(re.findall(r'\| \d+\.\d+-\d+\.\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \|', content))
-    task_rows.extend(re.findall(r'\| INFRA-\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \|', content))
+    # Check that task rows have labels and track info (look for rows that have all table elements including track and labels)
+    task_rows = re.findall(r'\| \d+\.\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \| .+ \|', content)
+    task_rows.extend(re.findall(r'\| \d+\.\d+-\d+\.\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \| .+ \|', content))
+    task_rows.extend(re.findall(r'\| INFRA-\d+ \|.*?\|.*?\|.*?\|.*?\|.*?\| .+ \| .+ \|', content))
     
-    # Should have multiple tasks with labels
-    assert len(task_rows) >= 10, f"Expected at least 10 tasks with labels, found {len(task_rows)}"
+    # Should have multiple tasks with labels and track info
+    assert len(task_rows) >= 10, f"Expected at least 10 tasks with track and labels, found {len(task_rows)}"
     
-    # Check that no task has empty labels (| |)
+    # Check that no task has empty labels or track (| |)
     for row in task_rows:
-        assert not row.endswith("| |"), f"Task should have labels: {row}"
+        parts = row.split("|")
+        # Should have at least 8 parts (including empty strings at start/end)
+        assert len(parts) >= 8, f"Task should have track and labels: {row}"
+
+
+def test_track_assignments():
+    """Test that track assignments match assignee expectations"""
+    plan_file = Path(__file__).parent.parent / "docs" / "PLAN.md"
+    
+    with open(plan_file, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    # Tasks assigned to @pcwilliams1258 should be Glass Box
+    pcwilliams_tasks = re.findall(r'\|.*?\| @pcwilliams1258 \| ([^|]+) \|.*?\|', content)
+    for track in pcwilliams_tasks:
+        assert "Glass Box" in track.strip(), f"@pcwilliams1258 tasks should be Glass Box track, found: {track}"
+    
+    # Tasks assigned to @copilot should be Delegated
+    copilot_tasks = re.findall(r'\|.*?\| @copilot \| ([^|]+) \|.*?\|', content)
+    for track in copilot_tasks:
+        assert "Delegated" in track.strip(), f"@copilot tasks should be Delegated track, found: {track}"
 
 
 def test_last_reviewed_date_updated():
