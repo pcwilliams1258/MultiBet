@@ -65,3 +65,22 @@ graph TD
     D --> D1[racing_logit_model.py];
     D --> D2[sports_catboost_model.py];
 ```
+
+## 3. System Workflow (Mermaid Diagram)
+
+This diagram illustrates the primary data flow for the MVP, from data ingestion by the pipeline to the generation of a value score by the core engine.
+
+```mermaid
+sequenceDiagram
+    participant DP as Data Pipeline
+    participant FS as Feature Store
+    participant CE as Core Engine
+    participant PM as Predictive Model
+
+    DP->>+FS: Ingest and transform raw odds data, storing features in Redis (Online) and BigQuery (Offline)
+    CE->>+FS: Request real-time features for an event
+    FS-->>-CE: Return feature vector
+    CE->>+PM: Call predict(features) on appropriate model
+    PM-->>-CE: Return prediction object (probability, confidence)
+    CE->>CE: Calculate Value_Score using prediction and market odds
+```
