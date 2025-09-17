@@ -8,9 +8,23 @@ This JSON object describes the current features and logic of the application. It
 
 ```json
 {
-  "version": "0.0.1",
-  "description": "Initial project structure setup. No application code yet.",
-  "features": {}
+  "version": "0.1.0",
+  "description": "Python application structure established with core engine, data pipelines, and ML models for betting analysis.",
+  "features": {
+    "core_engine": {
+      "base_model": "Abstract base class for all MultiBet models",
+      "value_scorer": "Calculates value scores and CLV for betting opportunities"
+    },
+    "data_pipelines": {
+      "api_poller": "Fetches data from external betting APIs",
+      "schemas": "Pydantic schemas for data validation",
+      "transformer": "Data preprocessing and feature engineering"
+    },
+    "models": {
+      "racing_logit_model": "Logistic regression model for horse racing",
+      "sports_catboost_model": "CatBoost model for general sports betting"
+    }
+  }
 }
 ```
 
@@ -20,10 +34,20 @@ This diagram shows the current file and directory structure of the application s
 
 ```mermaid
 graph TD
-    A[src] --> B[components];
-    A --> C[pages];
-    A --> D[utils];
-    A --> E[App.js];
+    A[src] --> B[core_engine];
+    A --> C[data_pipelines];
+    A --> D[models];
+    A --> E[tests];
+
+    B --> B1[base_model.py];
+    B --> B2[value_scorer.py];
+
+    C --> C1[api_poller.py];
+    C --> C2[schemas.py];
+    C --> C3[transformer.py];
+
+    D --> D1[racing_logit_model.py];
+    D --> D2[sports_catboost_model.py];
 ```
 
 ## 3. System Workflow (Mermaid Diagram)
