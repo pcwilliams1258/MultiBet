@@ -70,10 +70,10 @@ def test_pcwilliams1258_references_present():
     # Count @pcwilliams1258 references
     pcwilliams_count = content.count("@pcwilliams1258")
 
-    # Should have exactly 14 references based on the original founder-username count
+    # Should have exactly 7 references after restructuring to focus on phases 1-3
     assert (
-        pcwilliams_count == 14
-    ), f"Expected 14 @pcwilliams1258 references, found {pcwilliams_count}"
+        pcwilliams_count == 7
+    ), f"Expected 7 @pcwilliams1258 references, found {pcwilliams_count}"
 
 
 def test_assignee_tracks_section_updated():
@@ -104,12 +104,13 @@ def test_specific_task_assignments():
     with open(plan_file, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Test some critical tasks are assigned to @pcwilliams1258
+    # Test some critical tasks are assigned to @pcwilliams1258 (updated for phases 1-3 structure)
     critical_tasks = [
-        "Implement quantitative correlation engine",
-        "Implement dynamic Fractional Kelly staking",
-        "Automate Closing Line Value (CLV) Logging",
-        "Integrate SHAP for Model Explainability",
+        "initialize a clean project environment",
+        "define a core engine architecture",
+        "implement foundational quantitative logic",
+        "architect a two-layer Feature Store",
+        "engineer high-alpha sports features",
     ]
 
     for task in critical_tasks:
