@@ -2,35 +2,28 @@
 name: Feature Request
 about: Suggest an idea for this project
 title: '[FEATURE] '
-labels: ['enhancement']
+labels: ['enhancement', 'needs-triage']
 assignees: ''
 
 ---
 
-## Problem Description
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+##  Problem Description
+Is your feature request related to a problem? Please provide a clear and concise description of what the problem is.
+_Example: I'm always frustrated when [...]_
 
 ### Is your feature request related to a problem?
 - [ ] I have reviewed `current_project_state.md` to understand how this feature fits with the existing architecture
 
 ## Proposed Solution
-A clear and concise description of what you want to happen.
+A clear and concise description of what you want to happen. How would this feature solve the problem?
 
-## Acceptance Criteria
-Please provide specific, testable criteria that define when this feature is complete:
-- [ ] Criterion 1
-- [ ] Criterion 2
-- [ ] Criterion 3
-
-## Definition of Done
-This feature implementation must include:
-- [ ] Unit tests for the core logic
-- [ ] Gherkin `.feature` file describing the expected behavior  
-- [ ] Passing all checks in the CI pipeline
-- [ ] Support for "Dry Run" mode where applicable
+## ✅ Acceptance Criteria
+Please provide specific, testable criteria that would define this feature as complete.
+- [ ] Criterion 1:
+- [ ] Criterion 2:
 
 ## Alternative Solutions
-A clear and concise description of any alternative solutions or features you've considered.
+Have you considered any alternative solutions or features?
 
 ## Additional Context
-Add any other context or screenshots about the feature request here.
+Add any other context, mockups, or screenshots about the feature request here.
