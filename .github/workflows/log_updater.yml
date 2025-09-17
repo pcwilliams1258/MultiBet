@@ -1,13 +1,13 @@
-name: Prompt Log Updater
+name: Log Updater
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  update-prompt-log:
+  update-log:
     runs-on: ubuntu-latest
-    name: Update PROMPT_LOG.md
+    name: Update LOGS.md
     
     steps:
       - name: Checkout code
@@ -82,7 +82,7 @@ jobs:
               return false;
             }
       
-      - name: Update PROMPT_LOG.md
+      - name: Update LOGS.md
         if: steps.check_assignee.outputs.result == 'true'
         run: |
           ISSUE_NUMBER="${{ steps.extract_issue.outputs.result }}"
@@ -90,7 +90,7 @@ jobs:
           ISSUE_URL="https://github.com/${{ github.repository }}/issues/${ISSUE_NUMBER}"
           
           # Create the new entry following the exact template format
-          cat >> docs/PROMPT_LOG.md << EOF
+          cat >> docs/LOGS.md << EOF
           
           ## Issue #${ISSUE_NUMBER} Entry
           
@@ -120,6 +120,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add docs/PROMPT_LOG.md
-          git commit -m "Auto-update PROMPT_LOG.md for Issue #${{ steps.extract_issue.outputs.result }} (PR #${{ github.event.pull_request.number }})"
+          git add docs/LOGS.md
+          git commit -m "Auto-update LOGS.md for Issue #${{ steps.extract_issue.outputs.result }} (PR #${{ github.event.pull_request.number }})"
           git push
