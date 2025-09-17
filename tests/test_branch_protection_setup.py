@@ -49,7 +49,9 @@ def test_ci_workflow_exists():
     ]
 
     for job in required_jobs:
-        assert job in workflow_content, f"Required job '{job}' not found in CI workflow"
+        assert (
+            job in workflow_content
+        ), f"Required job '{job}' not found in CI workflow"
 
 
 def test_branch_protection_documentation():
@@ -102,7 +104,9 @@ def test_requirements_file_format():
     essential_packages = ["flask", "pandas", "numpy", "pytest"]
     for package in essential_packages:
         package_found = any(package.lower() in pkg.lower() for pkg in packages)
-        assert package_found, f"Essential package '{package}' not found in requirements"
+        assert (
+            package_found
+        ), f"Essential package '{package}' not found in requirements"
 
 
 def test_gitignore_includes_common_files():
