@@ -120,3 +120,68 @@ To price Same-Game Multis (SGMs), a Student's t-Copula will be used to model the
 **Note:**  
 - All formulas and schemas are open to extension and clarification as implementation proceeds.
 - Edge cases and error handling (e.g., missing data, zero odds) should be explicitly covered in code.
+
+---
+
+## 4. Core Engine and Model Interface
+
+### 4.1 BasePredictiveModel Abstract Class
+
+To ensure a pluggable architecture, all predictive models MUST inherit from the BasePredictiveModel abstract base class. This class defines the standard interface for interaction with the Core Engine.
+
+**File Location:** src/core_engine/base_model.py
+
+**Definition:**
+```python
+from abc import ABC, abstractmethod
+from typing import Dict, Any
+
+class BasePredictiveModel(ABC):
+    """
+    Abstract base class for all predictive models.
+    Enforces a standard contract for model interaction.
+    """
+
+    @abstractmethod
+    def predict(self, features: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Generates a prediction based on input features.
+
+        Args:
+            features: A dictionary of feature names and their values.
+
+        Returns:
+            A dictionary containing the prediction, typically including
+            outcome probabilities and a model confidence score.
+        """
+        pass
+
+    @abstractmethod
+    def explain(self, features: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Provides an explanation for a prediction using SHAP or a similar method.
+
+        Args:
+            features: A dictionary of feature names and their values.
+
+        Returns:
+            A dictionary detailing the contribution of each feature to the
+            final prediction.
+        """
+        pass
+```
+
+### 4.2 Standardized Prediction Object Schema
+
+The predict method of any BasePredictiveModel implementation MUST return a dictionary that conforms to the following structure to ensure consistent processing by the Core Engine.
+
+**Key Fields:**
+
+| Field | Data Type | Description | Required |
+|---|---|---|---|
+| prediction_probability | Float | The model's calculated probability for the primary outcome. | Yes |
+| value_score | Float | The calculated value score based on the prediction and odds. | Yes |
+| confidence_score | Float | The model's confidence in the prediction (e.g., derived from SHAP values), ranging from 0.0 to 1.0. | Yes |
+| explanation | Dict | A dictionary containing the top positive and negative features influencing the prediction. | Yes |
+| model_version | String | The version identifier of the model that generated the prediction. | Yes |
+| raw_prediction | Any | The raw output from the underlying model library (e.g., probabilities for all outcomes). | No |
