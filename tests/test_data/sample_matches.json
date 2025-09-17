@@ -1,0 +1,80 @@
+[
+    {
+        "match_id": "test_001",
+        "home_team": "Team A",
+        "away_team": "Team B",
+        "closing_odds": {
+            "home_win": 2.5,
+            "draw": 3.2,
+            "away_win": 2.8
+        },
+        "opening_odds": {
+            "home_win": 2.3,
+            "draw": 3.0,
+            "away_win": 3.1
+        },
+        "model_predictions": {
+            "home_win_prob": 0.42,
+            "draw_prob": 0.28,
+            "away_win_prob": 0.30
+        },
+        "actual_result": "home_win",
+        "clv_metrics": {
+            "home_clv": 0.087,
+            "draw_clv": -0.067,
+            "away_clv": -0.097
+        }
+    },
+    {
+        "match_id": "test_002", 
+        "home_team": "Team C",
+        "away_team": "Team D",
+        "closing_odds": {
+            "home_win": 1.8,
+            "draw": 3.5,
+            "away_win": 4.2
+        },
+        "opening_odds": {
+            "home_win": 1.9,
+            "draw": 3.3,
+            "away_win": 3.8
+        },
+        "model_predictions": {
+            "home_win_prob": 0.58,
+            "draw_prob": 0.25,
+            "away_win_prob": 0.17
+        },
+        "actual_result": "home_win",
+        "clv_metrics": {
+            "home_clv": 0.044,
+            "draw_clv": -0.125,
+            "away_clv": -0.286
+        }
+    },
+    {
+        "match_id": "test_003",
+        "home_team": "Team E", 
+        "away_team": "Team F",
+        "closing_odds": {
+            "home_win": 3.1,
+            "draw": 3.0,
+            "away_win": 2.4
+        },
+        "opening_odds": {
+            "home_win": 2.9,
+            "draw": 2.8,
+            "away_win": 2.6
+        },
+        "model_predictions": {
+            "home_win_prob": 0.31,
+            "draw_prob": 0.33,
+            "away_win_prob": 0.36
+        },
+        "actual_result": "away_win",
+        "clv_metrics": {
+            "home_clv": -0.069,
+            "draw_clv": -0.010,
+            "away_clv": -0.136
+        }
+    }
+]

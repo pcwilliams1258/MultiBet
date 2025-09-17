@@ -12,3 +12,5 @@ pydantic
 pytest
 requests-mock
 pyyaml
+pytest-bdd
+pytest-cov
