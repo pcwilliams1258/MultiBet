@@ -3,17 +3,18 @@ Test fixtures for the MultiBet application.
 This module provides reusable test components and mock data.
 """
 
-import pytest
 import json
 from pathlib import Path
-from unittest.mock import Mock, MagicMock
+from unittest.mock import MagicMock, Mock
+
+import pytest
 
 
 @pytest.fixture
 def sample_match_data():
     """Load sample match data from test_data directory."""
     test_data_path = Path(__file__).parent / "test_data" / "sample_matches.json"
-    with open(test_data_path, 'r') as f:
+    with open(test_data_path, "r") as f:
         return json.load(f)
 
 
@@ -25,13 +26,13 @@ def mock_odds_api():
         "home_win": 2.5,
         "draw": 3.2,
         "away_win": 2.8,
-        "timestamp": "2024-01-01T12:00:00Z"
+        "timestamp": "2024-01-01T12:00:00Z",
     }
     mock_api.get_closing_odds.return_value = {
         "home_win": 2.6,
         "draw": 3.1,
         "away_win": 2.7,
-        "timestamp": "2024-01-01T14:00:00Z"
+        "timestamp": "2024-01-01T14:00:00Z",
     }
     return mock_api
 
@@ -45,7 +46,7 @@ def mock_prediction_model():
         "draw_prob": 0.28,
         "away_win_prob": 0.30,
         "confidence": 0.85,
-        "model_version": "test_v1.0"
+        "model_version": "test_v1.0",
     }
     return mock_model
 
@@ -71,34 +72,40 @@ def test_config():
         "MAX_ODDS": 10.0,
         "CLV_THRESHOLD": 0.03,
         "DATABASE_URL": "sqlite:///:memory:",
-        "LOG_LEVEL": "DEBUG"
+        "LOG_LEVEL": "DEBUG",
     }
 
 
 @pytest.fixture
 def value_score_calculator():
     """Provide a value score calculator instance for testing."""
+
     class TestValueScoreCalculator:
         def __init__(self, config=None):
             self.config = config or {}
-            
+
         def calculate(self, odds, probability):
             """Calculate value score: (probability * odds) - 1"""
             return (probability * odds) - 1
-            
+
         def is_value_bet(self, value_score, threshold=0.0):
             """Determine if this is a value bet."""
             return value_score > threshold
-            
+
         def calculate_kelly_stake(self, odds, probability, bankroll):
             """Calculate optimal Kelly criterion stake."""
             value_score = self.calculate(odds, probability)
             if value_score <= 0:
                 return 0.0
             kelly_fraction = (probability * odds - 1) / (odds - 1)
-            return max(0, min(kelly_fraction * bankroll, 
-                            bankroll * self.config.get('MAX_STAKE_PERCENTAGE', 0.02)))
-    
+            return max(
+                0,
+                min(
+                    kelly_fraction * bankroll,
+                    bankroll * self.config.get("MAX_STAKE_PERCENTAGE", 0.02),
+                ),
+            )
+
     return TestValueScoreCalculator
 
 
@@ -111,10 +118,10 @@ def betting_simulation_data():
             {"odds": 2.5, "stake": 200, "result": "win", "profit": 300},
             {"odds": 1.8, "stake": 150, "result": "loss", "profit": -150},
             {"odds": 3.2, "stake": 100, "result": "win", "profit": 220},
-            {"odds": 2.1, "stake": 180, "result": "loss", "profit": -180}
+            {"odds": 2.1, "stake": 180, "result": "loss", "profit": -180},
         ],
         "expected_roi": 0.019,
-        "expected_final_bankroll": 10190
+        "expected_final_bankroll": 10190,
     }
 
 
@@ -126,20 +133,20 @@ def clv_test_data():
             "opening_odds": 2.3,
             "closing_odds": 2.5,
             "bet_odds": 2.4,
-            "expected_clv": 0.042
+            "expected_clv": 0.042,
         },
         {
             "opening_odds": 1.9,
             "closing_odds": 1.8,
             "bet_odds": 1.85,
-            "expected_clv": -0.027
+            "expected_clv": -0.027,
         },
         {
             "opening_odds": 3.1,
             "closing_odds": 3.2,
             "bet_odds": 3.0,
-            "expected_clv": -0.065
-        }
+            "expected_clv": -0.065,
+        },
     ]
 
 

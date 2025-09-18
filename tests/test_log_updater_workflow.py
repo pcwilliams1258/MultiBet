@@ -3,6 +3,7 @@ Test for GitHub Actions log updater workflow validation.
 """
 
 import os
+
 import yaml
 
 
@@ -84,13 +85,13 @@ def test_log_updater_workflow_steps():
 
     job = workflow_content["jobs"]["update-log"]
     step_names = [step.get("name", "") for step in job["steps"]]
-    
+
     required_steps = [
         "Checkout code",
         "Extract issue number from PR body",
         "Check issue assignee",
         "Update LOGS.md",
-        "Commit changes"
+        "Commit changes",
     ]
 
     for required_step in required_steps:
@@ -114,7 +115,7 @@ def test_log_updater_references_logs_file():
     # Check that it references LOGS.md
     assert "docs/LOGS.md" in content
     assert "Auto-update LOGS.md" in content
-    
+
     # Check that it doesn't reference old PROMPT_LOG.md
     assert "PROMPT_LOG.md" not in content
 
@@ -139,7 +140,9 @@ def test_old_prompt_log_updater_workflow_removed():
         "prompt_log_updater.yml",
     )
 
-    assert not os.path.exists(old_workflow_path), "Old prompt_log_updater.yml workflow should be removed"
+    assert not os.path.exists(
+        old_workflow_path
+    ), "Old prompt_log_updater.yml workflow should be removed"
 
 
 def test_old_prompt_log_file_removed():
