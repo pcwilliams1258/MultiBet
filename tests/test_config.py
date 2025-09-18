@@ -6,13 +6,8 @@ import pytest
 import os
 import tempfile
 import json
-from pathlib import Path
-import sys
 
-# Add the root config directory to the path for importing
-sys.path.insert(0, str(Path(__file__).parent.parent / "config"))
-
-from app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
+from config.app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
 
 
 class TestConfig:
