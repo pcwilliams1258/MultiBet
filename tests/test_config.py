@@ -2,19 +2,17 @@
 Tests for application configuration including DRY_RUN mode.
 """
 
-import json
-import os
-import sys
-import tempfile
-from pathlib import Path
-
 import pytest
+import os
+import tempfile
+import json
+from pathlib import Path
+import sys
 
-# Add the config directory to the path for importing
+# Add the root config directory to the path for importing
 sys.path.insert(0, str(Path(__file__).parent.parent / "config"))
 
-from app_config import disable_dry_run  # noqa: E402
-from app_config import Config, config, enable_dry_run, is_dry_run
+from app_config import Config, config, enable_dry_run, disable_dry_run, is_dry_run
 
 
 class TestConfig:
@@ -92,9 +90,13 @@ class TestConfig:
 
     def test_config_file_loading(self):
         """Test loading configuration from JSON file."""
-        config_data = {"DRY_RUN": True, "DEBUG": True, "MODEL_THRESHOLD": 0.08}
+        config_data = {
+            "DRY_RUN": True,
+            "DEBUG": True,
+            "MODEL_THRESHOLD": 0.08
+        }
 
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(config_data, f)
             config_file = f.name
 
@@ -161,6 +163,8 @@ class TestConfig:
 
     def test_boolean_parsing(self):
         """Test boolean value parsing from strings."""
+        test_config = Config()
+
         # Test various true values
         true_values = ["true", "True", "TRUE", "1", "yes", "Yes", "on", "enabled"]
         for value in true_values:
@@ -215,7 +219,7 @@ class TestDryRunIntegration:
         test_config = Config()
         test_config.set("DRY_RUN", True)
 
-        # Simulate a betting scenario with test values
+        # Simulate a betting scenario
         odds = 2.5
         probability = 0.5
         bankroll = 1000
@@ -226,17 +230,12 @@ class TestDryRunIntegration:
         # Mock betting function that checks DRY_RUN
         def place_bet(odds, stake, config):
             if not config.is_betting_enabled():
-                return {"result": "dry_run", "odds": odds, "stake": stake}
-            return {"result": "placed", "odds": odds, "stake": stake}
+                return {"status": "dry_run", "message": "DRY_RUN mode: no actual bet placed"}
+            return {"status": "bet_placed", "odds": odds, "stake": stake}
 
-        # Test that dry run mode is respected
         result = place_bet(odds, 100, test_config)
-        assert result["result"] == "dry_run"
-        assert result["odds"] == odds
-
-        # Verify we use the probability and bankroll variables for completeness
-        assert probability == 0.5  # Test value validation
-        assert bankroll == 1000  # Test bankroll validation
+        assert result["status"] == "dry_run"
+        assert "DRY_RUN mode" in result["message"]
 
     def test_dry_run_environment_variable_integration(self):
         """Test DRY_RUN mode via environment variable in realistic scenario."""
