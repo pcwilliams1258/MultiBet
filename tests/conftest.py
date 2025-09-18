@@ -3,11 +3,15 @@ Test fixtures for the MultiBet application.
 This module provides reusable test components and mock data.
 """
 
+import sys
 import json
 from pathlib import Path
 from unittest.mock import MagicMock, Mock
 
 import pytest
+
+# Add project root to the Python path to allow imports from 'src' and 'config'
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 @pytest.fixture
@@ -164,4 +168,5 @@ def mock_dry_run_logger():
     mock_logger.warning = Mock()
     mock_logger.debug = Mock()
     mock_logger.error = Mock()
+    return mock_logger
     return mock_logger
