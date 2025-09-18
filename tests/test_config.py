@@ -13,8 +13,8 @@ import pytest
 # Add the config directory to the path for importing
 sys.path.insert(0, str(Path(__file__).parent.parent / "config"))
 
-from app_config import (Config, config, disable_dry_run, enable_dry_run,
-                        is_dry_run)
+from app_config import disable_dry_run  # noqa: E402
+from app_config import Config, config, enable_dry_run, is_dry_run
 
 
 class TestConfig:
@@ -161,8 +161,6 @@ class TestConfig:
 
     def test_boolean_parsing(self):
         """Test boolean value parsing from strings."""
-        test_config = Config()
-
         # Test various true values
         true_values = ["true", "True", "TRUE", "1", "yes", "Yes", "on", "enabled"]
         for value in true_values:
