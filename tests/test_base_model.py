@@ -4,30 +4,9 @@ This ensures that the abstract base class and its contract are correctly defined
 """
 
 import pytest
-from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-# Define the BasePredictiveModel directly in the test file for validation
-# In a real scenario, this would be imported from: src.core_engine.base_model
-class BasePredictiveModel(ABC):
-    """
-    Abstract base class for all predictive models.
-    Enforces a standard contract for model interaction.
-    """
-
-    @abstractmethod
-    def predict(self, features: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generates a prediction based on input features.
-        """
-        pass
-
-    @abstractmethod
-    def explain(self, features: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Provides an explanation for a prediction.
-        """
-        pass
+from src.core_engine.base_model import BasePredictiveModel
 
 
 class ConcreteModel(BasePredictiveModel):
@@ -104,4 +83,5 @@ def test_concrete_model_methods_are_callable():
     explanation = model.explain(test_features)
     assert isinstance(explanation, dict)
     assert "explanation" in explanation
+    assert explanation["explanation"] == "Key feature X was high"
     assert explanation["explanation"] == "Key feature X was high"
