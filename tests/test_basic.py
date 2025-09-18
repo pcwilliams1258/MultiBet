@@ -41,14 +41,16 @@ def test_yaml_import():
     """Test that PyYAML is available (addresses issue #65)"""
     try:
         import yaml
-        
+
         # Test basic yaml functionality
         test_data = {"test": "value", "number": 42}
         yaml_string = yaml.dump(test_data)
         parsed_data = yaml.safe_load(yaml_string)
-        
+
         assert yaml is not None
         assert parsed_data["test"] == "value"
         assert parsed_data["number"] == 42
     except ImportError as e:
-        assert False, f"Failed to import yaml module: {e}. This indicates PyYAML is not installed."
+        assert (
+            False
+        ), f"Failed to import yaml module: {e}. This indicates PyYAML is not installed."
