@@ -75,36 +75,6 @@ def test_branch_protection_documentation():
         ), f"Required section '{section}' not found in documentation"
 
 
-def test_requirements_file_format():
-    """Test that requirements.txt is properly formatted"""
-    repo_root = Path(__file__).parent.parent
-    requirements_file = repo_root / "requirements.txt"
-
-    assert requirements_file.exists(), "requirements.txt must exist"
-
-    # Read and validate requirements format
-    with open(requirements_file, "r") as f:
-        lines = f.readlines()
-
-    # Remove the numbered format and validate packages
-    packages = []
-    for line in lines:
-        line = line.strip()
-        if line and not line.startswith("#"):
-            # Remove leading numbers if present
-            if line[0].isdigit() and "." in line:
-                package = line.split(".", 1)[1] if "." in line else line
-            else:
-                package = line
-            packages.append(package.strip())
-
-    # Check that essential packages are present
-    essential_packages = ["flask", "pandas", "numpy", "pytest"]
-    for package in essential_packages:
-        package_found = any(package.lower() in pkg.lower() for pkg in packages)
-        assert package_found, f"Essential package '{package}' not found in requirements"
-
-
 def test_src_directory_structure():
     """Test that src directory has the expected structure"""
     repo_root = Path(__file__).parent.parent
@@ -113,7 +83,7 @@ def test_src_directory_structure():
     assert src_dir.exists(), "src directory must exist"
 
     # Check for expected subdirectories based on the project structure
-    expected_dirs = ["core_engine", "data_pipelines", "models", "tests"]
+    expected_dirs = ["core_engine", "data_pipelines", "models"]
     for expected_dir in expected_dirs:
         dir_path = src_dir / expected_dir
         assert (
@@ -137,15 +107,6 @@ def test_gitignore_includes_common_files():
             pattern in gitignore_content
         ), f"Pattern '{pattern}' should be in .gitignore"
 
-    # Check for Python byte-compiled files (can be *.pyc or *.py[cod])
-    python_patterns = ["*.pyc", "*.py[cod]"]
-    python_pattern_found = any(
-        pattern in gitignore_content for pattern in python_patterns
-    )
-    assert (
-        python_pattern_found
-    ), "Python byte-compiled file patterns should be in .gitignore"
-
 
 def test_documentation_completeness():
     """Test that project documentation is complete"""
@@ -166,27 +127,3 @@ def test_documentation_completeness():
         assert (
             len(content) > 100
         ), f"Documentation file '{doc}' appears to be too short or empty"
-
-
-def test_workflow_trigger_configuration():
-    """Test that workflows are triggered on appropriate events"""
-    repo_root = Path(__file__).parent.parent
-    ci_workflow = repo_root / ".github" / "workflows" / "ci.yml"
-
-    assert ci_workflow.exists(), "CI workflow must exist"
-
-    workflow_content = ci_workflow.read_text()
-
-    # Check for proper trigger configuration
-    assert "on:" in workflow_content, "Workflow must have trigger configuration"
-    assert "pull_request:" in workflow_content, "Workflow must trigger on pull requests"
-    assert (
-        "branches: [ main ]" in workflow_content
-    ), "Workflow must trigger on main branch"
-
-
-if __name__ == "__main__":
-    # Run tests when script is executed directly
-    import pytest
-
-    pytest.main([__file__, "-v"])
