@@ -26,6 +26,7 @@ A brief description of the changes made in this PR and the problem it solves.
 - [ ] **Acceptance Criteria**: All acceptance criteria from the issue have been met and tested.
 
 ### 2. Quality Assurance
+- [ ] **Local Checks**: I have run the `pre-commit` hooks locally and they pass. This ensures my code is formatted and linted correctly.
 - [ ] **Unit Tests**: New and existing unit tests pass locally with my changes.
 - [ ] **BDD Tests**: New Gherkin `.feature` files have been added and are passing.
 - [ ] **Manual Validation**: I have manually verified that the changes work as expected.
@@ -35,12 +36,10 @@ A brief description of the changes made in this PR and the problem it solves.
 - [ ] **PLAN.md**: The status in `docs/PLAN.md` has been updated (e.g., from `📋 Planned` to `🔄 In Progress`).
 - [ ] **Architectural Docs**: Any relevant architectural diagrams or documents have been updated.
 
-### 4. AI-Generated Content (If applicable)
-- [ ] **Review**: I have reviewed the AI-generated code and take responsibility for its correctness and quality.
+### 4. AI-Assisted Development
+- [ ] **Review**: I have reviewed all AI-generated code and take full responsibility for its correctness and quality.
+- [ ] **Guidelines**: Changes are consistent with the best practices in `.github/copilot.md`.
 - [ ] **Prompt Logging**: Key prompts and AI responses have been logged in an issue with the `documentation` label as per our process.
-
-## AI-Generated Content
-- [ ] Changes are consistent with the guidelines in `.github/copilot.md`
 
 ---
 
