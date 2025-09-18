@@ -51,6 +51,6 @@ def test_yaml_import():
         assert parsed_data["test"] == "value"
         assert parsed_data["number"] == 42
     except ImportError as e:
-        assert (
-            False
-        ), f"Failed to import yaml module: {e}. This indicates PyYAML is not installed."
+        assert False, (
+            f"Failed to import yaml module: {e}. This indicates PyYAML is not installed."
+        )

@@ -19,9 +19,9 @@ def test_repository_structure():
     # Check for essential directories
     assert (repo_root / "src").exists(), "src directory must exist"
     assert (repo_root / ".github").exists(), ".github directory must exist"
-    assert (
-        repo_root / ".github" / "workflows"
-    ).exists(), "workflows directory must exist"
+    assert (repo_root / ".github" / "workflows").exists(), (
+        "workflows directory must exist"
+    )
     assert (repo_root / "docs").exists(), "docs directory must exist"
 
     # Check for essential files
@@ -70,9 +70,9 @@ def test_branch_protection_documentation():
     ]
 
     for section in required_sections:
-        assert (
-            section in doc_content
-        ), f"Required section '{section}' not found in documentation"
+        assert section in doc_content, (
+            f"Required section '{section}' not found in documentation"
+        )
 
 
 def test_requirements_file_format():
@@ -116,9 +116,9 @@ def test_src_directory_structure():
     expected_dirs = ["core_engine", "data_pipelines", "models", "tests"]
     for expected_dir in expected_dirs:
         dir_path = src_dir / expected_dir
-        assert (
-            dir_path.exists()
-        ), f"Expected directory '{expected_dir}' not found in src/"
+        assert dir_path.exists(), (
+            f"Expected directory '{expected_dir}' not found in src/"
+        )
 
 
 def test_gitignore_includes_common_files():
@@ -133,18 +133,18 @@ def test_gitignore_includes_common_files():
     # Check for common patterns that should be ignored
     common_patterns = ["__pycache__", ".env", ".venv"]
     for pattern in common_patterns:
-        assert (
-            pattern in gitignore_content
-        ), f"Pattern '{pattern}' should be in .gitignore"
+        assert pattern in gitignore_content, (
+            f"Pattern '{pattern}' should be in .gitignore"
+        )
 
     # Check for Python byte-compiled files (can be *.pyc or *.py[cod])
     python_patterns = ["*.pyc", "*.py[cod]"]
     python_pattern_found = any(
         pattern in gitignore_content for pattern in python_patterns
     )
-    assert (
-        python_pattern_found
-    ), "Python byte-compiled file patterns should be in .gitignore"
+    assert python_pattern_found, (
+        "Python byte-compiled file patterns should be in .gitignore"
+    )
 
 
 def test_documentation_completeness():
@@ -163,9 +163,9 @@ def test_documentation_completeness():
 
         # Check that files are not empty
         content = doc_path.read_text().strip()
-        assert (
-            len(content) > 100
-        ), f"Documentation file '{doc}' appears to be too short or empty"
+        assert len(content) > 100, (
+            f"Documentation file '{doc}' appears to be too short or empty"
+        )
 
 
 def test_workflow_trigger_configuration():
@@ -180,9 +180,9 @@ def test_workflow_trigger_configuration():
     # Check for proper trigger configuration
     assert "on:" in workflow_content, "Workflow must have trigger configuration"
     assert "pull_request:" in workflow_content, "Workflow must trigger on pull requests"
-    assert (
-        "branches: [ main ]" in workflow_content
-    ), "Workflow must trigger on main branch"
+    assert "branches: [ main ]" in workflow_content, (
+        "Workflow must trigger on main branch"
+    )
 
 
 if __name__ == "__main__":
