@@ -28,9 +28,9 @@ def test_update_logs_template_has_correct_frontmatter():
         "about: Use this template to log AI conversations and update key documents."
         in content
     ), "Template must have correct about description"
-    assert (
-        "title: 'LOG: [Brief description of changes]'" in content
-    ), "Template must have correct default title"
+    assert "title: 'LOG: [Brief description of changes]'" in content, (
+        "Template must have correct default title"
+    )
     assert "labels: 'documentation'" in content, "Template must have correct labels"
 
 
@@ -60,24 +60,24 @@ def test_update_logs_template_has_correct_instructions():
     content = template_file.read_text()
 
     # Check for key instruction elements
-    assert (
-        "development session with the AI" in content
-    ), "Template must mention AI development sessions"
-    assert (
-        "documentation/prompt_log.md" in content
-    ), "Template must reference documentation/prompt_log.md"
-    assert (
-        "documentation/technical_debt_log.md" in content
-    ), "Template must reference documentation/technical_debt_log.md"
-    assert (
-        "current_project_state.md" in content
-    ), "Template must reference current_project_state.md"
-    assert (
-        "(Paste AI conversation here)" in content
-    ), "Template must have placeholder for AI conversation"
-    assert (
-        '(Paste any identified technical debt here, or "N/A" if none)' in content
-    ), "Template must have placeholder for technical debt"
+    assert "development session with the AI" in content, (
+        "Template must mention AI development sessions"
+    )
+    assert "documentation/prompt_log.md" in content, (
+        "Template must reference documentation/prompt_log.md"
+    )
+    assert "documentation/technical_debt_log.md" in content, (
+        "Template must reference documentation/technical_debt_log.md"
+    )
+    assert "current_project_state.md" in content, (
+        "Template must reference current_project_state.md"
+    )
+    assert "(Paste AI conversation here)" in content, (
+        "Template must have placeholder for AI conversation"
+    )
+    assert '(Paste any identified technical debt here, or "N/A" if none)' in content, (
+        "Template must have placeholder for technical debt"
+    )
     assert (
         '(Paste new content for current_project_state.md here, or "N/A" if no architectural changes)'
         in content
@@ -93,9 +93,9 @@ def test_update_logs_template_has_proper_code_blocks():
 
     # Check for proper code block formatting
     assert "```text" in content, "Template must contain text code blocks"
-    assert (
-        "````markdown" in content
-    ), "Template must contain markdown code blocks with 4 backticks"
+    assert "````markdown" in content, (
+        "Template must contain markdown code blocks with 4 backticks"
+    )
 
 
 if __name__ == "__main__":

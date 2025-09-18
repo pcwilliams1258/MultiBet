@@ -56,9 +56,9 @@ def test_retrain_workflow_syntax():
     ]
 
     for required_step in required_steps:
-        assert any(
-            required_step in step_name for step_name in step_names
-        ), f"Required step '{required_step}' not found in workflow"
+        assert any(required_step in step_name for step_name in step_names), (
+            f"Required step '{required_step}' not found in workflow"
+        )
 
 
 def test_workflow_python_version():
@@ -119,9 +119,9 @@ def test_workflow_environment_variables():
     required_env_vars = ["GCP_PROJECT_ID", "BIGQUERY_DATASET", "MODEL_REGISTRY_BUCKET"]
 
     for env_var in required_env_vars:
-        assert (
-            env_var in content
-        ), f"Environment variable {env_var} not found in workflow"
+        assert env_var in content, (
+            f"Environment variable {env_var} not found in workflow"
+        )
 
 
 def test_workflow_error_handling():

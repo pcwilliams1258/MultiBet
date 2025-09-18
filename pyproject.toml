@@ -1,0 +1,22 @@
+# pyproject.toml
+
+[tool.ruff]
+# Set the maximum line length to 88 characters, matching Black's default.
+line-length = 88
+# Target Python 3.11 for syntax compatibility.
+target-version = "py311"
+
+[tool.ruff.lint]
+# Select the rule sets to enable.
+# E: pycodestyle errors
+# W: pycodestyle warnings
+# F: Pyflakes
+# I: isort
+select = ["E", "W", "F", "I"]
+
+# Ignore specific rules. E501 (line-too-long) is handled by the formatter.
+ignore = ["E501"]
+
+[tool.ruff.format]
+# Opt-in to preview style changes for the formatter.
+preview = true

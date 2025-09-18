@@ -95,9 +95,9 @@ def test_log_updater_workflow_steps():
     ]
 
     for required_step in required_steps:
-        assert any(
-            required_step in step_name for step_name in step_names
-        ), f"Required step '{required_step}' not found in workflow"
+        assert any(required_step in step_name for step_name in step_names), (
+            f"Required step '{required_step}' not found in workflow"
+        )
 
 
 def test_log_updater_references_logs_file():
@@ -140,9 +140,9 @@ def test_old_prompt_log_updater_workflow_removed():
         "prompt_log_updater.yml",
     )
 
-    assert not os.path.exists(
-        old_workflow_path
-    ), "Old prompt_log_updater.yml workflow should be removed"
+    assert not os.path.exists(old_workflow_path), (
+        "Old prompt_log_updater.yml workflow should be removed"
+    )
 
 
 def test_old_prompt_log_file_removed():
