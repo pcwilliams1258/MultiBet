@@ -80,6 +80,6 @@ jobs:
         if: always()
 
       - name: Run dependency vulnerability scan with pip-audit
-        uses: pypa/gh-action-pip-audit@v1.2.0
+        uses: pypa/gh-action-pip-audit@v1.3.1
         with:
           inputs: requirements.txt
