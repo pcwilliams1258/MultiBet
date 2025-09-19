@@ -19,13 +19,8 @@ The following protection rules should be configured for the `main` branch:
 - **Setting**: `Require status checks to pass before merging`
 - **Purpose**: Ensures all CI/CD checks pass before code can be merged
 - **Required Status Checks**:
-  - `Lint and Format Check`
-  - `Run Tests`
-  - `Security Scan`
-  - `Dependency Check`
-  - `Documentation Check`
-  - `Build Validation`
-  - `Integration Status Check`
+  - `Quality Checks & Tests`
+  - `Security Audits`
 
 ### 3. Require Branches to be Up to Date Before Merging
 - **Setting**: `Require branches to be up to date before merging`
@@ -56,13 +51,8 @@ The following protection rules should be configured for the `main` branch:
 2. Check "Require status checks to pass before merging"
    - Check "Require branches to be up to date before merging"
    - In the status checks list, add the following required checks:
-     - `Lint and Format Check`
-     - `Run Tests`
-     - `Security Scan`
-     - `Dependency Check`
-     - `Documentation Check`
-     - `Build Validation`
-     - `Integration Status Check`
+     - `Quality Checks & Tests`
+     - `Security Audits`
 
 3. Check "Restrict pushes that create files"
    - This prevents accidentally pushing large files or binaries
@@ -88,13 +78,8 @@ The CI/CD pipeline includes the following status checks:
 
 | Status Check | Purpose | Failure Impact |
 |-------------|---------|----------------|
-| Lint and Format Check | Code style and formatting validation | Blocks merge |
-| Run Tests | Unit and integration test execution | Blocks merge |
-| Security Scan | Security vulnerability detection | Blocks merge |
-| Dependency Check | Dependency vulnerability audit | Blocks merge |
-| Documentation Check | Ensures docs are updated with code changes | Warning only |
-| Build Validation | Python syntax and import validation | Blocks merge |
-| Integration Status Check | Overall CI/CD pipeline status | Blocks merge |
+| Quality Checks & Tests | Code quality validation with Ruff and automated testing with pytest | Blocks merge |
+| Security Audits | Security vulnerability detection with Bandit and dependency vulnerability scanning with pip-audit | Blocks merge |
 
 ## Troubleshooting
 
