@@ -1,4 +1,4 @@
-# .github/workflows/ci.yml
+#.github/workflows/ci.yml
 name: Python CI Pipeline
 
 on:
@@ -50,21 +50,22 @@ jobs:
     name: Security Audits
     runs-on: ubuntu-latest
     permissions:
-      # Required for Bandit to upload findings to the Security tab
-      security-events: write 
-      # Required for actions in private repositories
+      # Required for Semgrep to upload findings to the Security tab
+      security-events: write
       actions: read
       contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run SAST scan with Bandit
-        # Use the official action from PyCQA, which handles SARIF generation and upload
-        uses: PyCQA/bandit-action@v1
+      - name: Run SAST scan with Semgrep
+        # Semgrep is a modern, fast, and powerful SAST tool.
+        # The config "p/bandit" runs a ruleset equivalent to Bandit's checks.
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: "p/bandit"
 
       - name: Run dependency vulnerability scan with pip-audit
-        # Use the official action from PyPA, pinned to a specific stable version
         uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           inputs: requirements.txt
