@@ -46,35 +46,25 @@ jobs:
           display-options: "fEX"
         if: always()
 
-  security:
+    security:
     name: Security Audits
     runs-on: ubuntu-latest
     permissions:
+      # Required for Bandit to upload findings to the Security tab
+      security-events: write 
+      # Required for actions in private repositories
+      actions: read
       contents: read
-      security-events: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Run SAST scan with Bandit
+        # Use the official action from PyCQA, which handles SARIF generation and upload
         uses: PyCQA/bandit-action@v1
-        with:
-          run: bandit -r . -c pyproject.toml --format sarif --output bandit-results.sarif
-        continue-on-error: true
-
-      - name: Upload Bandit SARIF report
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: bandit-results.sarif
-          category: bandit
-        if: always()
 
       - name: Run dependency vulnerability scan with pip-audit
-        uses: pypa/gh-action-pip-audit@v1
+        # Use the official action from PyPA, pinned to a specific stable version
+        uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           inputs: requirements.txt
