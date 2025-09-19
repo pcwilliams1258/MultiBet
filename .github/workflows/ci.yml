@@ -33,7 +33,7 @@ jobs:
       - name: Lint and Format Check with Ruff
         uses: astral-sh/ruff-action@v3
         with:
-          args: "check --output-format=github."
+          args: "check --output-format=github"
 
       - name: Run automated tests with pytest
         run: pytest --junit-xml=test-results.xml
