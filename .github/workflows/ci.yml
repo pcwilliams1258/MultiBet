@@ -30,6 +30,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Format code with Ruff
+        uses: astral-sh/ruff-action@v2
+        with:
+          args: "format"
+
       - name: Lint and Format Check with Ruff
         uses: astral-sh/ruff-action@v3
         with:
@@ -75,6 +80,6 @@ jobs:
         if: always()
 
       - name: Run dependency vulnerability scan with pip-audit
-        uses: pypa/gh-action-pip-audit@v1.3.2
+        uses: pypa/gh-action-pip-audit@v1.3.1
         with:
           inputs: requirements.txt
