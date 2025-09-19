@@ -175,9 +175,7 @@ def test_workflow_trigger_configuration():
     # Check for proper trigger configuration
     assert "on:" in workflow_content, "Workflow must have trigger configuration"
     assert "pull_request:" in workflow_content, "Workflow must trigger on pull requests"
-    assert "- main" in workflow_content, (
-        "Workflow must trigger on main branch"
-    )
+    assert "- main" in workflow_content, "Workflow must trigger on main branch"
 
 
 if __name__ == "__main__":
