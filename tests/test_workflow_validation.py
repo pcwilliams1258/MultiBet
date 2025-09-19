@@ -24,7 +24,8 @@ def test_ci_workflow_exists():
     # Basic workflow structure validation
     assert "name" in workflow_content
     assert "jobs" in workflow_content
-    assert "on" in workflow_content
+    # YAML parses 'on:' as boolean True, so check for that
+    assert True in workflow_content or "on" in workflow_content
 
 
 def test_workflow_python_version():
