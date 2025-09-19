@@ -46,7 +46,7 @@ jobs:
           display-options: "fEX"
         if: always()
 
-    security:
+  security:
     name: Security Audits
     runs-on: ubuntu-latest
     permissions:
